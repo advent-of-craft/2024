@@ -6,3 +6,5 @@
 Join us on `Discord` and `Linkedin` to follow the initiative.
 
 To wait until december, we invite you to read our [`Summer Craft Book`](https://github.com/advent-of-craft/2024-summer-craft-book) 😎
+
+![Adventy Of Craft 2024](img/advent-of-craft.webp)
