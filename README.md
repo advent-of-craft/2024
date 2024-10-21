@@ -25,17 +25,17 @@ Each challenge follow the next and the repository is updated daily.
 
 This year we will cover about 7 languages:
 
-- C#
-- Java
-- Kotlin
-- Typescript
-- Php
-- Scala
-- Python
+- `C#`
+- `Java`
+- `Kotlin`
+- `Typescript`
+- `Php`
+- `Scala`
+- `Python`
 
 A repository is available and each day a topic will appear with a proposed solution for the day before.
 
-A brand new folder of original exercises you've never seen.
+A brand-new folder of original exercises you've never seen.
 
 We know you will enjoy the journey 🎅.
 Happy Crafting!
@@ -43,3 +43,74 @@ Happy Crafting!
 ## More explanation
 Please take a look at our introduction video:
 [![Introductional video](img/video.webp)](https://www.youtube.com/shorts/5ZSryorYO8s)
+
+## Who are we?
+### Founders
+<table>
+<tr>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/yanncourtel>
+            <img src=https://avatars.githubusercontent.com/u/75068587?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Yann Courtel/>
+            <br />
+            <sub style="font-size:14px"><b>Yann Courtel</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/ythirion>
+            <img src=https://avatars.githubusercontent.com/u/20967693?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Yoan Thirion/>
+            <br />
+            <sub style="font-size:14px"><b>Yoan Thirion</b></sub>
+        </a>
+    </td>
+</tr>
+</table>
+
+### Contributors
+<table>
+<tr>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/mengdaming>
+            <img src=https://avatars.githubusercontent.com/u/1313765?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Damien Menanteau/>
+            <br />
+            <sub style="font-size:14px"><b>Damien Menanteau</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/drkaine>
+            <img src=https://avatars.githubusercontent.com/u/16664820?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Drkaine/>
+            <br />
+            <sub style="font-size:14px"><b>Drkaine</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/tr00d>
+            <img src=https://avatars.githubusercontent.com/u/59444272?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Guillaume Faas/>
+            <br />
+            <sub style="font-size:14px"><b>Guillaume Faas</b></sub>
+        </a>
+    </td>
+</tr>
+<tr>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/Audmqx>
+            <img src=https://avatars.githubusercontent.com/u/77394867?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Maxim Ric Iangaev/>
+            <br />
+            <sub style="font-size:14px"><b>Maxim Ric Iangaev</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/Mirna-Mfd>
+            <img src=https://avatars.githubusercontent.com/u/98544069?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Mirna Mahfoud/>
+            <br />
+            <sub style="font-size:14px"><b>Mirna Mahfoud</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/pierrebelin>
+            <img src=https://avatars.githubusercontent.com/u/25244392?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Pierre Belin/>
+            <br />
+            <sub style="font-size:14px"><b>Pierre Belin</b></sub>
+        </a>
+    </td>
+</tr>
+</table>
