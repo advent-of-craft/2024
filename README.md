@@ -3,19 +3,28 @@
 [![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/company/advent-of-craft)
 [![Youtube channel](https://camo.githubusercontent.com/94b947e758f767a15576edfb06cc06075d6b62ef7a8946db69c5ce4a2ee830f7/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f596f75547562652d4646303030303f7374796c653d666f722d7468652d6261646765266c6f676f3d796f7574756265266c6f676f436f6c6f723d7768697465)](https://www.youtube.com/@AdventOfCraft)
 
-[![License](https://img.shields.io/github/license/advent-of-craft/2024.svg)](https://github.com/advent-of-craft/2024/blob/main/LICENSE) [![Days](https://img.shields.io/badge/%F0%9F%8E%85%20aoc%202024-not%20started-red)](https://github.com/advent-of-craft/2024)
+[![License](https://img.shields.io/github/license/advent-of-craft/2024.svg)](https://github.com/advent-of-craft/2024/blob/main/LICENSE) [![Days](https://img.shields.io/badge/%F0%9F%8E%85%20aoc%202024-day%200-green)](https://github.com/advent-of-craft/2024)
 
 Join us on [`Discord`](https://discord.gg/E5Z9s9UKTS) and [`Linkedin`](https://www.linkedin.com/company/advent-of-craft) to follow the initiative.
 
 > Christmas is closing, December is looming. Winter is coming...
 
 The Advent of Craft team wants to bring you a new adventure both human and technical. Something you have not done before, something that will undoubtedly make you grow.
-
 You are about to enter a territory that is going to make you work hard.
-
 Get your IDE ready!
 
-![Adventy Of Craft 2024](img/advent-of-craft.webp)
+![Advent Of Craft 2024](img/advent-of-craft.webp)
+
+## Table of Contents
+- [What you can expect this year.](#what-you-can-expect-this-year)
+    - [More explanation](#more-explanation)
+- [Welcome at `North Star Solutions`](#welcome-at-north-star-solutions)
+    - [Instructions](#instructions)
+- [Challenges](#challenges)
+  - [Solutions](#solutions)
+- [Who are we?](#who-are-we)
+    - [Founders](#founders)
+    - [Contributors](#contributors)
 
 ## What you can expect this year.
 
@@ -40,9 +49,27 @@ A brand-new folder of original exercises you've never seen.
 We know you will enjoy the journey 🎅.
 Happy Crafting!
 
-## More explanation
+### More explanation
 Please take a look at our introduction video:
-[![Introductional video](img/video.webp)](https://www.youtube.com/shorts/5ZSryorYO8s)
+
+[![Introduction video](img/video.webp)](https://www.youtube.com/shorts/5ZSryorYO8s)
+
+## Welcome at `North Star Solutions`
+As a journeymen and women in software craftsmanship, there are challenges you face every day.
+They are challenges that require you to search, to be patient. Others to be quick and to trust your instincts.
+
+In this story, you have been working as a new consultant at `North Star Solutions` since a couple of months.
+
+![North Star Solutions](img/north-star-solutions.webp)
+
+### Instructions
+[Here are the instructions for your journey](docs/INSTRUCTIONS.md)
+
+## Challenges
+- [Day 0: An encrypted email...](docs/day00/challenge.md)
+
+### Solutions
+
 
 ## Who are we?
 ### Founders
@@ -89,8 +116,6 @@ Please take a look at our introduction video:
             <sub style="font-size:14px"><b>Guillaume Faas</b></sub>
         </a>
     </td>
-</tr>
-<tr>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
         <a href=https://github.com/Audmqx>
             <img src=https://avatars.githubusercontent.com/u/77394867?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Maxim Ric Iangaev/>
@@ -112,8 +137,6 @@ Please take a look at our introduction video:
             <sub style="font-size:14px"><b>Pierre Belin</b></sub>
         </a>
     </td>
-</tr>
-<tr>
 	<td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
         <a href=https://github.com/rabahkahil>
             <img src=https://avatars.githubusercontent.com/u/171915649?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Rabah KAHIL/>

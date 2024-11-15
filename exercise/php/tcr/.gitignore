@@ -1,0 +1,8 @@
+# Below files and directories are automatically created
+# by tcr.sh and do not need to be committed to this repository
+
+bin/**
+doc/**
+download/**
+LICENSE.md
+README.md
