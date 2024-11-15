@@ -69,7 +69,7 @@ In this story, you have been working as a new consultant at `North Star Solution
 - [Day 0: An encrypted email...](docs/day00/challenge.md)
 
 ### Solutions
-
+- [Day 0: An encrypted email...](docs/day00/solution/step-by-step.md)
 
 ## Who are we?
 ### Founders
