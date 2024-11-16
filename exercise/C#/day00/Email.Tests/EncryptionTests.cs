@@ -20,11 +20,9 @@ public class EncryptionTests
             .Be("L7wht/YddOoTvYvrc+wFcZhtXNvZ2cHFxq9ND27h1Ovv/aWLxN8lWv1xMsguM/R4Yodk3rn9cppI+YarggtPjA==");
     
     [Fact]
-    public void Decrypt_An_Encrypted_String()
-        => _encryption
-            .Decrypt(FileUtils.LoadFile("EncryptedEmail.txt"))
-            .Should()
-            .Be("Invalid decryption");
+    public Task Decrypt_An_Encrypted_String()
+        => Verify(_encryption
+            .Decrypt(FileUtils.LoadFile("EncryptedEmail.txt")));
 
     [Fact]
     public void EncryptDecrypt_ShouldReturnOriginalString()
