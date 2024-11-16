@@ -18,6 +18,13 @@ public class EncryptionTests
             .Encrypt("Unlock Your Potential with the Advent Of Craft Calendar!")
             .Should()
             .Be("L7wht/YddOoTvYvrc+wFcZhtXNvZ2cHFxq9ND27h1Ovv/aWLxN8lWv1xMsguM/R4Yodk3rn9cppI+YarggtPjA==");
+    
+    [Fact]
+    public void Decrypt_An_Encrypted_String()
+        => _encryption
+            .Decrypt(FileUtils.LoadFile("EncryptedEmail.txt"))
+            .Should()
+            .Be("Invalid decryption");
 
     [Fact]
     public void EncryptDecrypt_ShouldReturnOriginalString()
