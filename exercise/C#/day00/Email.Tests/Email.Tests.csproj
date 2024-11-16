@@ -30,9 +30,24 @@
             <DependentUpon>EncryptionTests.cs</DependentUpon>
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
-        <None Update="EncryptedEmail.txt">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <None Update="DecryptedEmail.txt">
+          <ParentFile>EncryptionTests</ParentFile>
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
+        <None Update="EncryptedEmail.txt">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="EncryptedString.txt">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="DecryptedString.txt">
+          <ParentFile>EncryptionTests</ParentFile>
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="ressources\" />
     </ItemGroup>
 
 </Project>

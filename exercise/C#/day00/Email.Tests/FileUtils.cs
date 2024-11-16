@@ -8,7 +8,6 @@ public static class FileUtils
     public static string LoadFile(string fileName)
         => File.ReadAllText(
             Combine(
-                GetDirectoryName(Assembly.GetExecutingAssembly().Location)!,
-                fileName)
+                GetDirectoryName(Assembly.GetExecutingAssembly().Location)!, fileName)
         );
 }
