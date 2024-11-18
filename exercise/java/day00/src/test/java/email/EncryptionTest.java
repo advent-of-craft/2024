@@ -35,7 +35,7 @@ class EncryptionTest {
                 .assertIsSatisfied();
     }
 
-    private static Encryption createEncryption() {
+    public static Encryption createEncryption() {
         try {
             return new Encryption(
                     new Configuration(convertKey("Advent Of Craft"), convertIv("2024"))
