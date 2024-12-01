@@ -1,0 +1,20 @@
+{
+  "require": {
+    "php": ">=8.1",
+    "pestphp/pest": "^2.33"
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Communication\\": "src/Communication",
+      "Tests\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/pest"
+  }
+}
