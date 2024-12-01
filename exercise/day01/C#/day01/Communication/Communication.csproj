@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>12</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Bank\" />
+    <None Remove="LanguageExt.Core" />
+    <None Remove="Math\" />
+    <None Remove="Post\" />
+    <None Remove="Rental\" />
+  </ItemGroup>
+</Project>
