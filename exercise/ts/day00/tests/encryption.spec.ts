@@ -28,4 +28,10 @@ describe('Encryption', () => {
             })
         );
     });
+
+    test('should decrypt email ', () => {
+        const decrypted = encryption.decrypt(loadFile('EncryptedEmail.txt'));
+        expect(decrypted).not.toBeUndefined();
+        expect(decrypted).toMatchSnapshot();
+    });
 });
