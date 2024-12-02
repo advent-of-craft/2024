@@ -71,6 +71,7 @@ In this story, you have been working as a new consultant at `North Star Solution
 
 ### Solutions
 - [Day 0: An encrypted email...](docs/day00/solution/step-by-step.md)
+- [Day 1: Fight primitive obsession...](docs/day01/solution/step-by-step.md)
 
 ## Who are we?
 ### Founders
