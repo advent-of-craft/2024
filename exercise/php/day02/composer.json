@@ -1,0 +1,21 @@
+{
+  "require": {
+    "php": ">=8.1",
+    "pestphp/pest": "^2.33",
+    "steos/quickcheck": "v2.0.2"
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Games\\": "src/Games",
+      "Tests\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/pest"
+  }
+}
