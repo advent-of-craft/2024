@@ -1,4 +1,4 @@
-import { fizzbuzz, max, min } from "../src/fizzbuzz";
+import { createFizzBuzzMap, fizzbuzz, max, min } from "../src/fizzbuzz";
 import * as O from "fp-ts/Option";
 import { isNone, isSome } from "fp-ts/Option";
 import * as fc from "fast-check";
@@ -29,14 +29,35 @@ describe("FizzBuzz should return", () => {
     [105, "FizzBuzzWhizz"],
     [165, "FizzBuzzBang"],
     [330, "FizzBuzzBang"],
-    [1155, "FizzBuzzBangWhizz"],
+    [1155, "FizzBuzzWhizzBang"],
   ])("its representation %s -> %s", (input, expectedResult) => {
-    const conversionResult = fizzbuzz(input);
+    const conversionResult = fizzbuzz()(input);
     expect(isSome(conversionResult)).toBeTruthy();
 
     if (isSome(conversionResult)) {
       expect(conversionResult.value).toBe(expectedResult);
     }
+  });
+
+  test("populated map", () => {
+    const conf = new Map([
+      [7, "Whizz"],
+      [5, "Buzz"],
+      [3, "Fizz"],
+    ]);
+
+    const fullMap = createFizzBuzzMap(conf);
+    expect(fullMap).toEqual(
+      new Map([
+        [105, "FizzBuzzWhizz"],
+        [35, "BuzzWhizz"],
+        [15, "FizzBuzz"],
+        [21, "FizzWhizz"],
+        [7, "Whizz"],
+        [5, "Buzz"],
+        [3, "Fizz"],
+      ])
+    );
   });
 
   test("valid strings for numbers between 1 and 1155", () => {
@@ -50,7 +71,7 @@ describe("FizzBuzz should return", () => {
 
   const isConvertValid = (input: number): boolean =>
     pipe(
-      fizzbuzz(input),
+      fizzbuzz()(input),
       O.exists((result) => validStringsFor(input).includes(result))
     );
 
@@ -73,10 +94,11 @@ describe("FizzBuzz should return", () => {
   ];
 
   test("none for numbers out of range", () => {
+    const fizzbuzzInstance = fizzbuzz();
     fc.assert(
       fc.property(
         fc.integer().filter((n) => n < min || n > max),
-        (n) => isNone(fizzbuzz(n))
+        (n) => isNone(fizzbuzzInstance(n))
       )
     );
   });
