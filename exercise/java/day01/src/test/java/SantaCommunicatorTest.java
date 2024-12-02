@@ -20,7 +20,7 @@ class SantaCommunicatorTest {
 
     @Test
     void composeMessage() {
-        var message = communicator.composeMessage(DASHER, NORTH_POLE, 5, numberOfDayBeforeChristmas);
+        var message = communicator.composeMessage(DASHER, new SantaCommunicator.ReindeerLocation(NORTH_POLE, 5), numberOfDayBeforeChristmas);
         assertThat(message).isEqualTo("Dear Dasher, please return from North Pole in 17 day(s) to be ready and rest before Christmas.");
     }
 
@@ -28,8 +28,7 @@ class SantaCommunicatorTest {
     void shouldDetectOverdueReindeer() {
         var overdue = communicator.isOverdue(
                 DASHER,
-                NORTH_POLE,
-                numberOfDayBeforeChristmas,
+                new SantaCommunicator.ReindeerLocation(NORTH_POLE, numberOfDayBeforeChristmas),
                 numberOfDayBeforeChristmas,
                 logger);
 
@@ -43,8 +42,7 @@ class SantaCommunicatorTest {
         assertThat(
                 communicator.isOverdue(
                         DASHER,
-                        NORTH_POLE,
-                        numberOfDayBeforeChristmas - numberOfDaysToRest - 1,
+                        new SantaCommunicator.ReindeerLocation(NORTH_POLE, numberOfDayBeforeChristmas - numberOfDaysToRest - 1),
                         numberOfDayBeforeChristmas,
                         logger)
         ).isFalse();
