@@ -6,14 +6,14 @@ export const max = 1155;
 
 type FizzBuzzMapping = Map<number, string>;
 
-let defaultMapping: FizzBuzzMapping = new Map([
+const defaultMapping: FizzBuzzMapping = new Map([
   [11, "Bang"],
   [7, "Whizz"],
   [5, "Buzz"],
   [3, "Fizz"],
 ]);
 
-export const fizzbuzz =
+export const parametricFizzBuzz =
   (conf: FizzBuzzMapping = defaultMapping) =>
   (input: number): Option<string> =>
     isOutOfRange(input) ? none : some(convertSafely(input, conf));
@@ -45,7 +45,6 @@ export const createFizzBuzzMap = (
       fullMap.set(currentKey, currentValue);
     }
 
-    // Generate further combinations
     for (let i = startIndex; i < keys.length; i++) {
       combine(
         minimalMap,

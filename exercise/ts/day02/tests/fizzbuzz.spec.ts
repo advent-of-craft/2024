@@ -1,4 +1,9 @@
-import { createFizzBuzzMap, fizzbuzz, max, min } from "../src/fizzbuzz";
+import {
+  createFizzBuzzMap,
+  parametricFizzBuzz,
+  max,
+  min,
+} from "../src/fizzbuzz";
 import * as O from "fp-ts/Option";
 import { isNone, isSome } from "fp-ts/Option";
 import * as fc from "fast-check";
@@ -31,7 +36,7 @@ describe("FizzBuzz should return", () => {
     [330, "FizzBuzzBang"],
     [1155, "FizzBuzzWhizzBang"],
   ])("its representation %s -> %s", (input, expectedResult) => {
-    const conversionResult = fizzbuzz()(input);
+    const conversionResult = parametricFizzBuzz()(input);
     expect(isSome(conversionResult)).toBeTruthy();
 
     if (isSome(conversionResult)) {
@@ -71,7 +76,7 @@ describe("FizzBuzz should return", () => {
 
   const isConvertValid = (input: number): boolean =>
     pipe(
-      fizzbuzz()(input),
+      parametricFizzBuzz()(input),
       O.exists((result) => validStringsFor(input).includes(result))
     );
 
@@ -94,7 +99,7 @@ describe("FizzBuzz should return", () => {
   ];
 
   test("none for numbers out of range", () => {
-    const fizzbuzzInstance = fizzbuzz();
+    const fizzbuzzInstance = parametricFizzBuzz();
     fc.assert(
       fc.property(
         fc.integer().filter((n) => n < min || n > max),
