@@ -1,32 +1,19 @@
 ﻿using LanguageExt;
 
-namespace Games
+namespace Games;
+
+public class FizzBuzz(Configuration configuration)
 {
-    public static class FizzBuzz
-    {
-        public const int Min = 1;
-        public const int Max = 100;
+    public Option<string> Convert(int input)
+        => configuration.IsOutOfRange(input)
+            ? Option<string>.None
+            : ConvertSafely(input);
 
-        private static readonly Dictionary<int, string> Mapping = new()
-            {
-                {15, "FizzBuzz"},
-                {3, "Fizz"},
-                {5, "Buzz"}
-            };
+    private string ConvertSafely(int input)
+        => string.Join("", configuration.Mapping
+            .Where(p => Is(p.Divisor, input))
+            .Map(p => p.Value)
+            .DefaultIfEmpty(input.ToString()));
 
-        public static Option<string> Convert(int input)
-            => IsOutOfRange(input)
-                ? Option<string>.None
-                : ConvertSafely(input);
-
-        private static string ConvertSafely(int input)
-            => Mapping
-                .Find(p => Is(p.Key, input))
-                .Map(kvp => kvp.Value)
-                .FirstOrDefault(input.ToString());
-
-        private static bool Is(int divisor, int input) => input % divisor == 0;
-
-        private static bool IsOutOfRange(int input) => input is < Min or > Max;
-    }
+    private static bool Is(int divisor, int input) => input % divisor == 0;
 }
