@@ -7,12 +7,12 @@ namespace Games
         public const int Min = 1;
         public const int Max = 100;
 
-        private static readonly Map<int, string> Mapping =
-            Map.create(
-                (15, "FizzBuzz"),
-                (3, "Fizz"),
-                (5, "Buzz")
-            );
+        private static readonly Dictionary<int, string> Mapping = new()
+            {
+                {15, "FizzBuzz"},
+                {3, "Fizz"},
+                {5, "Buzz"}
+            };
 
         public static Option<string> Convert(int input)
             => IsOutOfRange(input)

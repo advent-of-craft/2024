@@ -1,3 +1,4 @@
+using FluentAssertions;
 using FluentAssertions.LanguageExt;
 using FsCheck;
 using FsCheck.Xunit;
@@ -25,7 +26,7 @@ namespace Games.Tests
         public void Returns_Number_Representation(int input, string expectedResult)
             => Games.FizzBuzz.Convert(input)
                 .Should()
-                .BeSome(expectedResult);
+                .BeSome(x => x.Should().Be(expectedResult));
 
         [Property]
         public Property Parse_Return_Valid_String_For_Numbers_Between_1_And_100()
