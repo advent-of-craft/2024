@@ -1,3 +1,5 @@
+const recommendedAgeKey = "recommendedAge";
+const assignedGiftKey = "assignedTo";
 export class Gift {
   private readonly attributes: Map<string, string> = new Map<string, string>();
 
@@ -25,7 +27,7 @@ export class Gift {
   }
 
   public assignToChild(childName: string): void {
-    this.addAttribute("assignedTo", childName);
+    this.addAttribute(assignedGiftKey, childName);
   }
 
   public addAttribute(key: string, value: string): void {
@@ -37,7 +39,7 @@ export class Gift {
   }
 
   public getRecommendedAge(): number {
-    const recommendedAge = this.attributes.get("recommendedAge");
+    const recommendedAge = this.attributes.get(recommendedAgeKey);
     return recommendedAge ? parseInt(recommendedAge, 10) : 0;
   }
 
