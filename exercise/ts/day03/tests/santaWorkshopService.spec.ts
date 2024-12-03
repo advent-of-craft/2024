@@ -1,5 +1,9 @@
 import {SantaWorkshopService} from "../src/santaWorkshopService";
 import {Gift} from "../src/gift";
+import fc from "fast-check";
+
+const UnderweightGiftArbitrary = fc.double({max: 5, maxExcluded: true});
+const OverweightGiftArbitrary = fc.double({min: 5, minExcluded: true});
 
 describe('SantaWorkshopService', () => {
     let service: SantaWorkshopService;
@@ -14,18 +18,20 @@ describe('SantaWorkshopService', () => {
         const color = 'Purple';
         const material = 'Plastic';
 
-        const gift = service.prepareGift(giftName, weight, color, material);
+        fc.assert(fc.property(UnderweightGiftArbitrary, (weight) => {
+            const gift = service.prepareGift(giftName, weight, color, material);
 
-        expect(gift).toBeInstanceOf(Gift);
+            expect(gift).toBeInstanceOf(Gift);
+        }))
     });
 
     it('should throw an error if gift is too heavy', () => {
         const giftName = 'Dog-E';
-        const weight = 6;
         const color = 'White';
         const material = 'Metal';
-
-        expect(() => service.prepareGift(giftName, weight, color, material)).toThrow('Gift is too heavy for Santa\'s sleigh');
+        fc.assert(fc.property(OverweightGiftArbitrary, (weight) => {
+            expect(() => service.prepareGift(giftName, weight, color, material)).toThrow('Gift is too heavy for Santa\'s sleigh');
+        }))
     });
 
     it('should add an attribute to a gift', () => {
