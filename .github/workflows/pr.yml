@@ -8,7 +8,7 @@ jobs:
   build_and_test:
     strategy:
       matrix:
-        exercises: ['day00', 'day01']
+        exercises: ['day00', 'day01', 'day02']
 
     uses: ./.github/workflows/build-and-test.yml
     with:
