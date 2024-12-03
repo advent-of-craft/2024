@@ -1,3 +1,11 @@
+import { none, Option, some, exists, match } from 'fp-ts/Option';
+import { pipe } from 'fp-ts/function';
+
+const tryParseInt = (string: string): Option<number> => {
+    const parsed = Number.parseInt(string, 10);
+    return Number.isNaN(parsed) ? none : some(parsed);
+}
+
 export class Gift {
     private attributes: Map<string, string> = new Map<string, string>();
 
@@ -17,8 +25,10 @@ export class Gift {
     }
 
     public getRecommendedAge(): number {
-        const recommendedAge = this.attributes.get('recommendedAge');
-        return recommendedAge ? parseInt(recommendedAge, 10) : 0;
+        return pipe(
+            tryParseInt(this.attributes.get('recommendedAge')),
+            match(() => 0, recommendedAge => recommendedAge)
+        )
     }
 
     public toString(): string {

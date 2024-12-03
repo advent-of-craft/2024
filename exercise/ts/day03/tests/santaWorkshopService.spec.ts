@@ -2,8 +2,9 @@ import {SantaWorkshopService} from "../src/santaWorkshopService";
 import {Gift} from "../src/gift";
 import fc from "fast-check";
 
-const UnderweightGiftArbitrary = fc.double({max: 5, maxExcluded: true});
-const OverweightGiftArbitrary = fc.double({min: 5, minExcluded: true});
+const UnderweightGiftArbitrary = fc.float().filter((weight) => weight <= 5);
+const OverweightGiftArbitrary = fc.float().filter((weight) => weight > 5);
+const ValidAgeAttributeArbitrary = fc.integer().filter(age => age > 0);
 
 describe('SantaWorkshopService', () => {
     let service: SantaWorkshopService;
@@ -14,7 +15,6 @@ describe('SantaWorkshopService', () => {
 
     it('should prepare a gift with valid parameters', () => {
         const giftName = 'Bitzee';
-        const weight = 3;
         const color = 'Purple';
         const material = 'Plastic';
 
@@ -34,15 +34,17 @@ describe('SantaWorkshopService', () => {
         }))
     });
 
-    it('should add an attribute to a gift', () => {
+    it('should add an recommended age to a gift', () => {
         const giftName = 'Furby';
         const weight = 1;
         const color = 'Multi';
         const material = 'Cotton';
 
-        const gift = service.prepareGift(giftName, weight, color, material);
-        gift.addAttribute('recommendedAge', '3');
+        fc.assert(fc.property(ValidAgeAttributeArbitrary, (age) => {
+            const gift = service.prepareGift(giftName, weight, color, material);
+            gift.addAttribute('recommendedAge', `${age}`);
 
-        expect(gift.getRecommendedAge()).toBe(3);
+            expect(gift.getRecommendedAge()).toBe(age);
+        }))
     });
 });

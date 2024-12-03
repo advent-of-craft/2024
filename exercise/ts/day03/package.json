@@ -2,6 +2,7 @@
   "name": "gift-preparation",
   "version": "1.0.0",
   "dependencies": {
+    "fp-ts": "2.16.9",
     "typescript": "^5.3.3"
   },
   "devDependencies": {
