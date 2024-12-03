@@ -1,19 +1,19 @@
 import { Gift } from "./gift";
 
-type GiftConfig = {
+export type GiftConfig = {
   giftName: string;
   weight: number;
   color: string;
   material: string;
 };
 
-const sleighWeightLimit = 5;
+export const SLEIGH_WEIGHT_LIMIT = 5;
 export class SantaWorkshopService {
   private readonly preparedGifts: Gift[] = [];
 
   public prepareGift(giftConfig: GiftConfig): Gift {
     const { giftName, weight, color, material } = giftConfig;
-    if (weight > sleighWeightLimit) {
+    if (weight > SLEIGH_WEIGHT_LIMIT) {
       throw new Error("Gift is too heavy for Santa's sleigh");
     }
     if (!giftName) {
