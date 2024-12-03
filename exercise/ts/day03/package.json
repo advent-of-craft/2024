@@ -2,12 +2,13 @@
   "name": "gift-preparation",
   "version": "1.0.0",
   "dependencies": {
+    "fast-check": "^3.23.1",
     "typescript": "^5.3.3"
   },
   "devDependencies": {
+    "@types/jest": "^29.5.8",
     "jest": "^29.7.0",
-    "ts-jest": "^29.1.1",
-    "@types/jest": "^29.5.8"
+    "ts-jest": "^29.1.1"
   },
   "scripts": {
     "test": "jest"
