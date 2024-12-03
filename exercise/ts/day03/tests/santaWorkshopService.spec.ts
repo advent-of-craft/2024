@@ -1,6 +1,12 @@
-import { SantaWorkshopService } from "../src/santaWorkshopService";
+import {
+  GiftConfig,
+  SantaWorkshopService,
+  SLEIGH_WEIGHT_LIMIT,
+} from "../src/santaWorkshopService";
 import { Gift } from "../src/gift";
 import fc from "fast-check";
+
+fc.configureGlobal({ numRuns: 1_000 });
 
 const giftCongig = {
   giftName: "Furby",
@@ -18,22 +24,15 @@ describe("SantaWorkshopService", () => {
   it("should prepare a gift with valid parameters", () => {
     fc.assert(
       fc.property(
-        fc.integer({ min: 1, max: 5 }),
-        fc.string({ minLength: 1 }),
-        fc.string({ minLength: 1 }),
-        fc.string({ minLength: 1 }),
-        (weight, giftName, color, material) => {
-          const gift = service.prepareGift({
-            weight,
-            giftName,
-            color,
-            material,
-          });
-          expect(gift).toBeInstanceOf(Gift);
-          expect(gift.getName()).toBe(giftName);
-          expect(gift.getWeight()).toBe(weight);
-          expect(gift.getColor()).toBe(color);
-          expect(gift.getMaterial()).toBe(material);
+        fc.record<GiftConfig>({
+          weight: fc.integer({ min: 1, max: 5 }),
+          giftName: fc.string({ minLength: 1 }),
+          color: fc.string({ minLength: 1 }),
+          material: fc.string({ minLength: 1 }),
+        }),
+        (giftParam) => {
+          const gift = service.prepareGift(giftParam);
+          expect(giftIsValid(gift, giftParam)).toBe(true);
         }
       )
     );
@@ -60,9 +59,11 @@ describe("SantaWorkshopService", () => {
 
     fc.assert(
       fc.property(
-        fc.string({ minLength: 1, unit: "grapheme" }),
-        fc.string({ minLength: 0, unit: "grapheme" }),
-        (key, value) => {
+        fc.dictionary<string>(
+          fc.string({ minLength: 1, unit: "grapheme" }),
+          fc.string({ minLength: 0, unit: "grapheme" })
+        ),
+        ({ key, value }) => {
           gift.addAttribute(key, value);
           expect(gift.getAttribute(key)).toBe(value);
         }
@@ -92,3 +93,12 @@ describe("SantaWorkshopService", () => {
     );
   });
 });
+
+function giftIsValid(gift: Gift, giftParameters): boolean {
+  return (
+    giftParameters.weight <= SLEIGH_WEIGHT_LIMIT &&
+    gift instanceof Gift &&
+    gift.toString() ===
+      `A ${giftParameters.color}-colored ${giftParameters.giftName} weighing ${giftParameters.weight} kg made in ${giftParameters.material}`
+  );
+}
