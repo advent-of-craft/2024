@@ -1,0 +1,19 @@
+{
+  "require": {
+    "pestphp/pest": "^2.33"
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Preparation\\": "src/Preparation",
+      "Tests\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/pest"
+  }
+}
