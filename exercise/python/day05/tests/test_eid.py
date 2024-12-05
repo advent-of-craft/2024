@@ -10,6 +10,10 @@ class EIDTest(unittest.TestCase):
     def generate_and_check_eid(self, *args, **kwargs):
         eid = Eid.generate(*args, **kwargs)
         assert_that(eid).is_length(8)
+        try:
+            int(eid)
+        except ValueError:
+            raise AssertionError(f"eid {eid} is not an number")
         return eid
 
     def test_eid_sloubi(self):
