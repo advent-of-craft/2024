@@ -20,7 +20,7 @@ class Eid:
 
     @staticmethod
     def format_birth_year(birth_year: int):
-        return "00"
+        return "{:02d}".format(birth_year % 100)
 
     @staticmethod
     def format_sn(sn: int) -> str:

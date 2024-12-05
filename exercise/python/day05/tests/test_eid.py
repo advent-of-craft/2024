@@ -22,6 +22,14 @@ class EIDTest(unittest.TestCase):
         eid = Eid.generate(ElvenSex.CATACT, birth_year=0, sn=1)
         assert_that(eid).starts_with("3")
 
+    def test_eid_birthyear(self):
+        eid = Eid.generate(ElvenSex.SLOUBI, birth_year=1950, sn=1)
+        assert_that(eid[1:3]).is_equal_to("50")
+
+    def test_eid_birthyear_has_leading_zero(self):
+        eid = Eid.generate(ElvenSex.SLOUBI, birth_year=1, sn=1)
+        assert_that(eid[1:3]).is_equal_to("01")
+
 
 if __name__ == "__main__":
     unittest.main()
