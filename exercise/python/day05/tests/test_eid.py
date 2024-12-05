@@ -36,6 +36,10 @@ class EIDTest(unittest.TestCase):
         eid = self.generate_and_check_eid(ElvenSex.SLOUBI, birth_year=1, sn=1)
         assert_that(eid[1:3]).is_equal_to("01")
 
+    def test_sn(self):
+        eid = self.generate_and_check_eid(ElvenSex.SLOUBI, birth_year=1, sn=123)
+        assert_that(eid[3:6]).is_equal_to("123")
+
 
 if __name__ == "__main__":
     unittest.main()

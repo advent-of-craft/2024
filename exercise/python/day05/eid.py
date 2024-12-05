@@ -24,7 +24,7 @@ class Eid:
 
     @staticmethod
     def format_sn(sn: int) -> str:
-        return "001"
+        return "{:03d}".format(sn)
 
     @staticmethod
     def format_control_key(prefix: str) -> str:
