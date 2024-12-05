@@ -40,6 +40,10 @@ class EIDTest(unittest.TestCase):
         eid = self.generate_and_check_eid(ElvenSex.SLOUBI, birth_year=1, sn=123)
         assert_that(eid[3:6]).is_equal_to("123")
 
+    def test_sn_has_leading_zero(self):
+        eid = self.generate_and_check_eid(ElvenSex.SLOUBI, birth_year=1, sn=5)
+        assert_that(eid[3:6]).is_equal_to("005")
+
 
 if __name__ == "__main__":
     unittest.main()
