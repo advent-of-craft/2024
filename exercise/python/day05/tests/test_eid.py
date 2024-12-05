@@ -28,6 +28,10 @@ class EIDTest(unittest.TestCase):
         eid = self.generate_and_check_eid(ElvenSex.CATACT, birth_year=0, sn=1)
         assert_that(eid).starts_with("3")
 
+    def test_eid_sex_must_be_elven_sex(self):
+        with self.assertRaises(ValueError):
+            self.generate_and_check_eid(sex="MALE", birth_year=0, sn=1)
+
     def test_eid_birthyear(self):
         eid = self.generate_and_check_eid(ElvenSex.SLOUBI, birth_year=1950, sn=1)
         assert_that(eid[1:3]).is_equal_to("50")

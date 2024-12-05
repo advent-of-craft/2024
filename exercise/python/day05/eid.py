@@ -19,6 +19,8 @@ class Eid:
 
     @staticmethod
     def format_sex(sex: ElvenSex) -> str:
+        if type(sex) != ElvenSex:
+            raise ValueError(f"sex {sex} is not an ElvenSex")
         return {ElvenSex.SLOUBI: "1", ElvenSex.GAGNA: "2", ElvenSex.CATACT: "3"}[sex]
 
     @staticmethod
