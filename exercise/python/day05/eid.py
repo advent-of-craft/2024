@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class ElvenSex:
+class ElvenSex(Enum):
     SLOUBI = 0
     GAGNA = 2
     CATACT = 3
