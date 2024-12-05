@@ -1,15 +1,21 @@
 from enum import Enum
 
 
+class ElvenSex:
+    SLOUBI = 0
+    GAGNA = 2
+    CATACT = 3
+
+
 class Eid:
     @staticmethod
-    def generate(sex: str, sn: int, birth_year: int) -> str:
+    def generate(sex: ElvenSex, sn: int, birth_year: int) -> str:
         prefix = Eid.format_sex(sex) + Eid.format_birth_year(birth_year) + Eid.format_sn(sn)
         control_key = Eid.format_control_key(prefix)
         return prefix + control_key
 
     @staticmethod
-    def format_sex(sex: str) -> str:
+    def format_sex(sex: ElvenSex) -> str:
         return "1"
 
     @staticmethod
