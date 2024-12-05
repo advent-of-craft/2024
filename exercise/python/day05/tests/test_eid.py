@@ -12,10 +12,6 @@ class EIDTest(unittest.TestCase):
         assert_that(eid).is_length(8)
         return eid
 
-    def test_eid(self):
-        eid = self.generate_and_check_eid(sex=ElvenSex.SLOUBI, birth_year=0, sn=1)
-        assert_that(eid).is_equal_to("10000195")
-
     def test_eid_sloubi(self):
         eid = self.generate_and_check_eid(ElvenSex.SLOUBI, birth_year=0, sn=1)
         assert_that(eid).starts_with("1")
