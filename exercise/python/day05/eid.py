@@ -33,4 +33,4 @@ class Eid:
 
     @staticmethod
     def format_control_key(prefix: str) -> str:
-        return "95"
+        return "{:02d}".format(97 - (int(prefix) % 97))

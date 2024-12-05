@@ -50,5 +50,23 @@ class EIDTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.generate_and_check_eid(ElvenSex.SLOUBI, birth_year=1, sn=0)
 
+    @staticmethod
+    def check_eid_control_key_match_first_6_digits(eid):
+        prefix = eid[:6]
+        control_key = eid[6:]
+        assert_that((int(prefix) + int(control_key)) % 97).is_equal_to(0)
+
+    def test_eid_control_key(self):
+        for birth_year in range(100):
+            eid = self.generate_and_check_eid(sex=ElvenSex.SLOUBI, birth_year=birth_year, sn=1)
+            self.check_eid_control_key_match_first_6_digits(eid)
+        for sn in range(1, 999):
+            eid = self.generate_and_check_eid(sex=ElvenSex.SLOUBI, birth_year=1, sn=sn)
+            self.check_eid_control_key_match_first_6_digits(eid)
+        for sex in ElvenSex:
+            eid = self.generate_and_check_eid(sex=sex, birth_year=1, sn=1)
+            self.check_eid_control_key_match_first_6_digits(eid)
+
+
 if __name__ == "__main__":
     unittest.main()
