@@ -5,9 +5,9 @@ MAX_SN = 999
 
 
 class ElvenSex(Enum):
-    SLOUBI = 0
-    GAGNA = 2
-    CATACT = 3
+    SLOUBI = "SLOUBI"
+    GAGNA = "GAGNA"
+    CATACT = "CATACT"
 
 
 class Eid:
