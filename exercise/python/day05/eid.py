@@ -16,7 +16,7 @@ class Eid:
 
     @staticmethod
     def format_sex(sex: ElvenSex) -> str:
-        return "1"
+        return {ElvenSex.SLOUBI: "1", ElvenSex.GAGNA: "2", ElvenSex.CATACT: "3"}[sex]
 
     @staticmethod
     def format_birth_year(birth_year: int):
