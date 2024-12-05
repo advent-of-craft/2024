@@ -44,6 +44,11 @@ class EIDTest(unittest.TestCase):
         eid = self.generate_and_check_eid(ElvenSex.SLOUBI, birth_year=1, sn=5)
         assert_that(eid[3:6]).is_equal_to("005")
 
+    def test_eid_cannot_be_out_of_bound(self):
+        with self.assertRaises(ValueError):
+            self.generate_and_check_eid(ElvenSex.SLOUBI, birth_year=1, sn=1000)
+        with self.assertRaises(ValueError):
+            self.generate_and_check_eid(ElvenSex.SLOUBI, birth_year=1, sn=0)
 
 if __name__ == "__main__":
     unittest.main()
