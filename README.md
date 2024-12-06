@@ -79,6 +79,7 @@ In this story, you have been working as a new consultant at `North Star Solution
 - [Day 2: Extend the program.](docs/day02/solution/step-by-step.md)
 - [Day 3: Fuzzy or not?](docs/day03/solution/step-by-step.md)
 - [Day 4: A routine with Fakes and Mocks.](docs/day04/solution/step-by-step.md)
+- [Day 5: Validate Elf Ids (EID)](docs/day05/solution/step-by-step.md)
 
 ## Who are we?
 ### Founders
