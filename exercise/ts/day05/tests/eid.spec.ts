@@ -17,8 +17,10 @@
 // '19800767'
 
 
+import { isEid } from '../src/eid';
+
 describe('EID', () => {
-    test('implement your tests here', () => {
-        expect(43).toBe(42);
+    it('should return false when eid is null', () => {
+        expect(isEid(null)).toBe(false);
     });
 });
