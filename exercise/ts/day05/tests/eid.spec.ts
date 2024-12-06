@@ -39,4 +39,8 @@ describe('EID', () => {
     it('should return false when eid is too long', () => {
         expect(isEid('100001000')).toBe(false);
     });
+
+    it('should return false when eid is an invalid sex', () => {
+        expect(isEid('40000100')).toBe(false);
+    });
 });
