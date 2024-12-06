@@ -31,4 +31,8 @@ describe('EID', () => {
     it('should return false when eid is empty', () => {
         expect(isEid('')).toBe(false);
     });
+
+    it('should return false when eid is too short', () => {
+        expect(isEid('1000010')).toBe(false);
+    });
 });
