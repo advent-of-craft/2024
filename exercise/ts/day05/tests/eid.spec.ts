@@ -6,7 +6,7 @@
 // '1000010' -> too short
 // '100001000' -> too long
 // '40000100' -> invalid sex
-// '4aa00100' -> invalid birth year
+// '1aa00100' -> invalid birth year
 // '10000000' -> invalid serial number
 // '10000101' -> invalid key
 // Valid:
