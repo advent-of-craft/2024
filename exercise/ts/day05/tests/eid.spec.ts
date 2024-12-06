@@ -23,4 +23,8 @@ describe('EID', () => {
     it('should return false when eid is null', () => {
         expect(isEid(null)).toBe(false);
     });
+
+    it('should return false when eid is undefined', () => {
+        expect(isEid(undefined)).toBe(false);
+    });
 });
