@@ -9,20 +9,9 @@ const isValidKey = (value: string, key: string): boolean => {
 }
 
 export const isEid = (value: string | null | undefined): value is Eid  => {
-    if(value?.length !== 8) {
-        return false;
-    }
-
     const EID_REGEX = /(?<gender>[123])(?<birthYear>[0-9]{2})(?<serial>[0-9]{3})(?<key>[0-9]{2})/;
-    const matched = value.match(EID_REGEX);
-    if(!matched) {
-        return false
-    }
-
-    const {gender, birthYear, serial, key}  = matched.groups
-    if (!isValidSerial(serial) || !isValidKey(`${gender}${birthYear}${serial}`, key)) {
-    return false;
-    }
-
-    return true;
+    const matched = (value ?? '').match(EID_REGEX);
+    return !!matched &&
+        isValidSerial(matched.groups.serial) &&
+        isValidKey(`${matched.groups.gender}${matched.groups.birthYear}${matched.groups.serial}`, matched.groups.key);
 }
