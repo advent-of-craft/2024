@@ -17,6 +17,7 @@ class EIDTests {
                 Arguments.of("40000325", "incorrect sex"),
                 Arguments.of("1ab14599", "incorrect birth year"),
                 Arguments.of("19814x08", "incorrect serial number"),
+                Arguments.of("19800074", "incorrect serial number"),
                 Arguments.of("19912378", "incorrect control key")
         );
     }
