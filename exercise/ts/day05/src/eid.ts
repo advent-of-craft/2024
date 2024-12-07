@@ -5,7 +5,7 @@ const isValidSerial = (serial: string): boolean => {
 }
 
 const isValidKey = (value: string, key: string): boolean => {
-    return Number.parseInt(value) % 97 === Number.parseInt(key);
+    return (97 - Number.parseInt(value) % 97) === Number.parseInt(key);
 }
 
 export const isEid = (value: string | null | undefined): value is Eid  => {

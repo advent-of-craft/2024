@@ -50,4 +50,14 @@ describe('EID', () => {
     it('should return false when eid is an invalid serial number', () => {
         expect(isEid('10000000')).toBe(false);
     });
+
+    it.each([
+        '19845606',
+        '30600233',
+        '29999922',
+        '11111151',
+        '19800767',
+    ])('should return true when eid is valid %s', (eid) => {
+        expect(isEid(eid)).toBe(true);
+    });
 });
