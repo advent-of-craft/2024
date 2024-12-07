@@ -16,7 +16,6 @@
 // '11111151'
 // '19800767'
 
-
 import { isEid } from '../src/eid';
 
 describe('EID', () => {
@@ -51,5 +50,4 @@ describe('EID', () => {
     it('should return false when eid is an invalid serial number', () => {
         expect(isEid('10000000')).toBe(false);
     });
-
 });
