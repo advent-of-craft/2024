@@ -43,4 +43,13 @@ describe('EID', () => {
     it('should return false when eid is an invalid sex', () => {
         expect(isEid('40000100')).toBe(false);
     });
+
+    it('should return false when eid is an invalid birthdate', () => {
+        expect(isEid('1aa00100')).toBe(false);
+    });
+
+    it('should return false when eid is an invalid serial number', () => {
+        expect(isEid('10000000')).toBe(false);
+    });
+
 });
