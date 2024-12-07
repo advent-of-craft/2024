@@ -3,7 +3,7 @@
 [![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/company/advent-of-craft)
 [![Youtube channel](https://camo.githubusercontent.com/94b947e758f767a15576edfb06cc06075d6b62ef7a8946db69c5ce4a2ee830f7/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f596f75547562652d4646303030303f7374796c653d666f722d7468652d6261646765266c6f676f3d796f7574756265266c6f676f436f6c6f723d7768697465)](https://www.youtube.com/@AdventOfCraft)
 
-[![License](https://img.shields.io/github/license/advent-of-craft/2024.svg)](https://github.com/advent-of-craft/2024/blob/main/LICENSE) [![Days](https://img.shields.io/badge/%F0%9F%8E%85%20aoc%202024-day%2006-green)](https://github.com/advent-of-craft/2024)
+[![License](https://img.shields.io/github/license/advent-of-craft/2024.svg)](https://github.com/advent-of-craft/2024/blob/main/LICENSE) [![Days](https://img.shields.io/badge/%F0%9F%8E%85%20aoc%202024-day%2007-green)](https://github.com/advent-of-craft/2024)
 
 Join us on [`Discord`](https://discord.gg/E5Z9s9UKTS) and [`Linkedin`](https://www.linkedin.com/company/advent-of-craft) to follow the initiative.
 
@@ -73,6 +73,7 @@ In this story, you have been working as a new consultant at `North Star Solution
 - [Day 4: A routine with Fakes and Mocks.](docs/day04/challenge.md)
 - [Day 5: Validate Elf Ids (EID)](docs/day05/challenge.md)
 - [Day 6: Review some code.](docs/day06/challenge.md)
+- [Day 7: Can you read and understand the tests well?](docs/day07/challenge.md)
 
 ### Solutions
 - [Day 0: An encrypted email...](docs/day00/solution/step-by-step.md)
