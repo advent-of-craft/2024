@@ -1,0 +1,1 @@
+type Behavior = "naughty" | "nice";
