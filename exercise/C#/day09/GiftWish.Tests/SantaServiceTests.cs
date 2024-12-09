@@ -11,31 +11,21 @@ public class SantaServiceTests
 
     [Fact]
     public void RequestIsApprovedForNiceChildWithFeasibleGift()
-    {
-        var niceChild = ANiceChild()
-            .Build();
-
-        _service.EvaluateRequest(niceChild).Should().BeTrue();
-    }
+        => _service.EvaluateRequest(ANiceChild())
+            .Should()
+            .BeTrue();
 
     [Fact]
     public void RequestIsDeniedForNaughtyChild()
-    {
-        var naughtyChild = ANaughtyChild()
-            .WithGiftRequest(
-                AGiftRequest()
-                    .WithFeasibility(true)
-                    .Build())
-            .Build();
-
-        _service.EvaluateRequest(naughtyChild).Should().BeFalse();
-    }
+        => _service.EvaluateRequest(ANaughtyChild())
+            .Should()
+            .BeFalse();
 
     [Fact]
     public void RequestIsDeniedForNiceChildWithInfeasibleGift()
     {
         var niceChildWithInfeasibleGift = ANiceChild()
-            .WithGiftRequest(
+            .ThatWant(
                 AGiftRequest()
                     .WithFeasibility(false)
                     .Build())

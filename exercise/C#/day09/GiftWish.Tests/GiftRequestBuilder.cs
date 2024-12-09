@@ -7,6 +7,10 @@ public class GiftRequestBuilder
     private Priority _priority = Priority.NiceToHave;
 
     public static GiftRequestBuilder AGiftRequest() => new();
+    
+    public static GiftRequestBuilder AFeasibleGift() => AGiftRequest().WithFeasibility(true);
+    
+    public static GiftRequestBuilder AnInfeasibleGift() => AGiftRequest().WithFeasibility(false);
 
     public GiftRequestBuilder WithGiftName(string giftName)
     {
@@ -25,6 +29,8 @@ public class GiftRequestBuilder
         _priority = priority;
         return this;
     }
+    
+    public static implicit operator GiftRequest(GiftRequestBuilder builder) => builder.Build();
 
     public GiftRequest Build() => new(_giftName, _isFeasible, _priority);
 }

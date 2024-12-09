@@ -1,3 +1,5 @@
+using static GiftWish.Tests.GiftRequestBuilder;
+
 namespace GiftWish.Tests;
 
 public class ChildBuilder
@@ -5,13 +7,13 @@ public class ChildBuilder
     private int _age = 9;
     private Behavior _behavior = Behavior.Nice;
     private string _firstName = "Alice";
-    private GiftRequest _giftRequest = GiftRequestBuilder.AGiftRequest().Build();
+    private GiftRequest _giftRequest = AFeasibleGift().Build();
     private string _lastName = "Thomas";
 
     public static ChildBuilder AChild() => new();
 
     public static ChildBuilder ANiceChild() => AChild().WithBehavior(Behavior.Nice);
-    
+
     public static ChildBuilder ANaughtyChild() => AChild().WithBehavior(Behavior.Naughty);
 
     public ChildBuilder WithFirstName(string firstName)
@@ -38,11 +40,13 @@ public class ChildBuilder
         return this;
     }
 
-    public ChildBuilder WithGiftRequest(GiftRequest giftRequest)
+    public ChildBuilder ThatWant(GiftRequest giftRequest)
     {
         _giftRequest = giftRequest;
         return this;
     }
+    
+    public static implicit operator Child(ChildBuilder builder) => builder.Build();
 
     public Child Build() => new(_firstName, _lastName, _age, _behavior, _giftRequest);
 }
