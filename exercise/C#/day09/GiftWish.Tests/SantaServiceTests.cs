@@ -11,7 +11,7 @@ public class SantaServiceTests
 
     [Fact]
     public void RequestIsApprovedForNiceChildWithFeasibleGift()
-        => _service.EvaluateRequest(ANiceChild())
+        => _service.EvaluateRequest(ANiceChild().ThatWant(AFeasibleGift()))
             .Should()
             .BeTrue();
 
@@ -23,14 +23,7 @@ public class SantaServiceTests
 
     [Fact]
     public void RequestIsDeniedForNiceChildWithInfeasibleGift()
-    {
-        var niceChildWithInfeasibleGift = ANiceChild()
-            .ThatWant(
-                AGiftRequest()
-                    .WithFeasibility(false)
-                    .Build())
-            .Build();
-
-        _service.EvaluateRequest(niceChildWithInfeasibleGift).Should().BeFalse();
-    }
+        => _service.EvaluateRequest(ANiceChild().ThatWant(AnInfeasibleGift()))
+            .Should()
+            .BeFalse();
 }
