@@ -12,12 +12,7 @@ public class SantaServiceTests
     [Fact]
     public void RequestIsApprovedForNiceChildWithFeasibleGift()
     {
-        var niceChild = AChild()
-            .WithBehavior(Behavior.Nice)
-            .WithGiftRequest(
-                AGiftRequest()
-                    .WithFeasibility(true)
-                    .Build())
+        var niceChild = ANiceChild()
             .Build();
 
         _service.EvaluateRequest(niceChild).Should().BeTrue();
@@ -26,8 +21,7 @@ public class SantaServiceTests
     [Fact]
     public void RequestIsDeniedForNaughtyChild()
     {
-        var naughtyChild = AChild()
-            .WithBehavior(Behavior.Naughty)
+        var naughtyChild = ANaughtyChild()
             .WithGiftRequest(
                 AGiftRequest()
                     .WithFeasibility(true)
@@ -40,8 +34,7 @@ public class SantaServiceTests
     [Fact]
     public void RequestIsDeniedForNiceChildWithInfeasibleGift()
     {
-        var niceChildWithInfeasibleGift = AChild()
-            .WithBehavior(Behavior.Nice)
+        var niceChildWithInfeasibleGift = ANiceChild()
             .WithGiftRequest(
                 AGiftRequest()
                     .WithFeasibility(false)

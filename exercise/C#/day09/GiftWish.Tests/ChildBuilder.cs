@@ -10,6 +10,10 @@ public class ChildBuilder
 
     public static ChildBuilder AChild() => new();
 
+    public static ChildBuilder ANiceChild() => AChild().WithBehavior(Behavior.Nice);
+    
+    public static ChildBuilder ANaughtyChild() => AChild().WithBehavior(Behavior.Naughty);
+
     public ChildBuilder WithFirstName(string firstName)
     {
         _firstName = firstName;
