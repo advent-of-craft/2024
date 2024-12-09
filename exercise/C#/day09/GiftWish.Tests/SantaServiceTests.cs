@@ -1,5 +1,6 @@
 using FluentAssertions;
 using Xunit;
+using static GiftWish.Tests.ChildBuilder;
 using static GiftWish.Tests.GiftRequestBuilder;
 
 namespace GiftWish.Tests;
@@ -11,33 +12,42 @@ public class SantaServiceTests
     [Fact]
     public void RequestIsApprovedForNiceChildWithFeasibleGift()
     {
-        var giftRequest = AGiftRequest()
-            .WithFeasibility(true)
+        var niceChild = AChild()
+            .WithBehavior(Behavior.Nice)
+            .WithGiftRequest(
+                AGiftRequest()
+                    .WithFeasibility(true)
+                    .Build())
             .Build();
-        
-        var niceChild = new Child("Alice", "Thomas", 9, Behavior.Nice, giftRequest);
+
         _service.EvaluateRequest(niceChild).Should().BeTrue();
     }
 
     [Fact]
     public void RequestIsDeniedForNaughtyChild()
     {
-        var giftRequest = AGiftRequest()
-            .WithFeasibility(true)
+        var naughtyChild = AChild()
+            .WithBehavior(Behavior.Naughty)
+            .WithGiftRequest(
+                AGiftRequest()
+                    .WithFeasibility(true)
+                    .Build())
             .Build();
-        
-        var naughtyChild = new Child("Noa", "Thierry", 6, Behavior.Naughty, giftRequest);
+
         _service.EvaluateRequest(naughtyChild).Should().BeFalse();
     }
 
     [Fact]
     public void RequestIsDeniedForNiceChildWithInfeasibleGift()
     {
-        var giftRequest = AGiftRequest()
-            .WithFeasibility(false)
+        var niceChildWithInfeasibleGift = AChild()
+            .WithBehavior(Behavior.Nice)
+            .WithGiftRequest(
+                AGiftRequest()
+                    .WithFeasibility(false)
+                    .Build())
             .Build();
-        
-        var niceChildWithInfeasibleGift = new Child("Charlie", "Joie", 3, Behavior.Nice, giftRequest);
+
         _service.EvaluateRequest(niceChildWithInfeasibleGift).Should().BeFalse();
     }
 }
