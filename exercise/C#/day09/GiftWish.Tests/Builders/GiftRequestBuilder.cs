@@ -1,4 +1,4 @@
-namespace GiftWish.Tests;
+namespace GiftWish.Tests.Builders;
 
 public class GiftRequestBuilder
 {

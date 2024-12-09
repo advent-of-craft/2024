@@ -1,7 +1,7 @@
 using FluentAssertions;
 using Xunit;
-using static GiftWish.Tests.ChildBuilder;
-using static GiftWish.Tests.GiftRequestBuilder;
+using static GiftWish.Tests.Builders.ChildBuilder;
+using static GiftWish.Tests.Builders.GiftRequestBuilder;
 
 namespace GiftWish.Tests;
 

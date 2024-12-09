@@ -1,6 +1,6 @@
-using static GiftWish.Tests.GiftRequestBuilder;
+using static GiftWish.Tests.Builders.GiftRequestBuilder;
 
-namespace GiftWish.Tests;
+namespace GiftWish.Tests.Builders;
 
 public class ChildBuilder
 {
