@@ -4,14 +4,9 @@ public static class Building
 {
     public static int WhichFloor(string instructions)
         => CalculationParameters
-            .CalculationParametersBuild(instructions)
-            .CalculateBraceFloorIncrement()
-            .Sum(kp => kp.Item2);
+            .Create(instructions)
+            .CalculateBraceFloorIncrement();
 
-    private static List<Tuple<char, int>> CalculateBraceFloorIncrement(this CalculationParameters parameters)
-        =>
-        [
-            new('(', parameters.OpenBrace * parameters.Instructions.Count(c => c == '(')),
-            new(')', parameters.ClosingBrace * parameters.Instructions.Count(c => c == ')'))
-        ];
+    private static int CalculateBraceFloorIncrement(this CalculationParameters parameters)
+        => parameters.OpenBrace * parameters.OpenBraceCount + parameters.ClosingBrace * parameters.ClosingBraceCount;
 }
