@@ -7,25 +7,36 @@
             List<Tuple<char, int>> val = [];
             var hasElf = instructions.Contains("🧝");
 
-            instructions = instructions.Replace("🧝", "");
-            
-            for (int i = 0; i < instructions.Length; i++)
+            if (hasElf)
             {
-                int increment;
-                var currentChar = instructions[i];
-                if(currentChar != '(' && currentChar != ')') continue;
-                if (hasElf)
-                {
-                    increment=  currentChar == ')' ? 3 : -2;
-                }
-                else
-                {
-                    increment = currentChar == '(' ? 1 : -1;
-                }
-                val.Add(new Tuple<char, int>(currentChar, increment));
+                instructions = instructions.Replace("🧝", "");
+                CalculateFloorIncrementWithElf(instructions, val);
+            } else {
+                CalculateFloorIncrement(instructions, val);
             }
+            
 
             return val.Sum(kp => kp.Item2);
+        }
+
+        private static void CalculateFloorIncrement(string instructions, List<Tuple<char, int>> val)
+        {
+            for (int i = 0; i < instructions.Length; i++)
+            {
+                var currentChar = instructions[i];
+                var increment = currentChar == '(' ? 1 : -1;
+                val.Add(new Tuple<char, int>(currentChar, increment));
+            }
+        }
+        
+        private static void CalculateFloorIncrementWithElf(string instructions, List<Tuple<char, int>> val)
+        {
+            for (int i = 0; i < instructions.Length; i++)
+            {
+                var currentChar = instructions[i];
+                var increment=  currentChar == ')' ? 3 : -2;
+                val.Add(new Tuple<char, int>(currentChar, increment));
+            }
         }
     }
 }
