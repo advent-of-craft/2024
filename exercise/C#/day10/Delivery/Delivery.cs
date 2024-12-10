@@ -5,38 +5,34 @@
         public static int WhichFloor(string instructions)
         {
             List<Tuple<char, int>> val = [];
-            var hasElf = instructions.Contains("🧝");
 
-            if (hasElf)
+            if (instructions.Contains("🧝"))
             {
                 instructions = instructions.Replace("🧝", "");
-                CalculateFloorIncrementWithElf(instructions, val);
+                val = CalculateFloorIncrementWithElf(instructions);
             } else {
-                CalculateFloorIncrement(instructions, val);
+                val = CalculateFloorIncrement(instructions);
             }
-            
 
             return val.Sum(kp => kp.Item2);
         }
 
-        private static void CalculateFloorIncrement(string instructions, List<Tuple<char, int>> val)
+        private static List<Tuple<char, int>> CalculateFloorIncrement(string instructions)
         {
-            for (int i = 0; i < instructions.Length; i++)
-            {
-                var currentChar = instructions[i];
-                var increment = currentChar == '(' ? 1 : -1;
-                val.Add(new Tuple<char, int>(currentChar, increment));
-            }
+            List<Tuple<char, int>> val = [];
+            val.Add(new Tuple<char, int>('(', instructions.Count(c => c == '(')));
+            val.Add(new Tuple<char, int>(')', -instructions.Count(c => c == ')')));
+
+            return val;
         }
         
-        private static void CalculateFloorIncrementWithElf(string instructions, List<Tuple<char, int>> val)
+        private static List<Tuple<char, int>> CalculateFloorIncrementWithElf(string instructions)
         {
-            for (int i = 0; i < instructions.Length; i++)
-            {
-                var currentChar = instructions[i];
-                var increment=  currentChar == ')' ? 3 : -2;
-                val.Add(new Tuple<char, int>(currentChar, increment));
-            }
+            List<Tuple<char, int>> val = [];
+            val.Add(new Tuple<char, int>('(', -2 * instructions.Count(c => c == '(')));
+            val.Add(new Tuple<char, int>(')', 3 * instructions.Count(c => c == ')')));
+
+            return val;
         }
     }
 }
