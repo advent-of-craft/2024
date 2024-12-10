@@ -7,31 +7,24 @@
             List<Tuple<char, int>> val = [];
             var hasElf = instructions.Contains("🧝");
             
+            
             for (int i = 0; i < instructions.Length; i++)
             {
-                var c = instructions[i];
-                
+                int increment;
+                var currentChar = instructions[i];
+                if(currentChar != '(' && currentChar != ')') continue;
                 if (hasElf)
                 {
-                    int j;
-                    if (c == ')') j = 3;
-                    else j = -2;
-
-                    val.Add(new Tuple<char, int>(c, j));
+                    increment=  currentChar == ')' ? 3 : -2;
                 }
                 else
                 {
-                    val.Add(new Tuple<char, int>(c, c == '(' ? 1 : -1));
+                    increment = currentChar == '(' ? 1 : -1;
                 }
+                val.Add(new Tuple<char, int>(currentChar, increment));
             }
 
-            int result = 0;
-            foreach (var kp in val)
-            {
-                result += kp.Item2;
-            }
-
-            return result;
+            return val.Sum(kp => kp.Item2);
         }
     }
 }
