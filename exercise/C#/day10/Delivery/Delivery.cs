@@ -18,11 +18,10 @@
 
                     val.Add(new Tuple<char, int>(c, j));
                 }
-                else if (!instructions.Contains("🧝"))
+                else
                 {
                     val.Add(new Tuple<char, int>(c, c == '(' ? 1 : -1));
                 }
-                else val.Add(new Tuple<char, int>(c, c == '(' ? 42 : -2));
             }
 
             int result = 0;
