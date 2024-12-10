@@ -6,7 +6,8 @@
         {
             List<Tuple<char, int>> val = [];
             var hasElf = instructions.Contains("🧝");
-            
+
+            instructions = instructions.Replace("🧝", "");
             
             for (int i = 0; i < instructions.Length; i++)
             {
