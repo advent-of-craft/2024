@@ -5,12 +5,13 @@
         public static int WhichFloor(string instructions)
         {
             List<Tuple<char, int>> val = [];
-
+            var hasElf = instructions.Contains("🧝");
+            
             for (int i = 0; i < instructions.Length; i++)
             {
                 var c = instructions[i];
-
-                if (instructions.Contains("🧝"))
+                
+                if (hasElf)
                 {
                     int j;
                     if (c == ')') j = 3;
