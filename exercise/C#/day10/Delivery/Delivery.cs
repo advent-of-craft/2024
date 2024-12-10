@@ -1,5 +1,9 @@
 ﻿namespace Delivery
 {
+    /** TODOs 
+     * - extract multiplicand to parameters and merge CalculateFloorIncrement and CalculateFloorIncrementWithElf
+     * - create configuration depending on the presence of an elf
+     */
     public static class Building
     {
         public static int WhichFloor(string instructions)
