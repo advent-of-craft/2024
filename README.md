@@ -22,6 +22,7 @@ Get your IDE ready!
     - [Instructions](#instructions)
 - [Challenges](#challenges)
   - [Solutions](#solutions)
+- [Calendar page](#calendar)
 - [Who are we?](#who-are-we)
     - [Founders](#founders)
     - [Contributors](#contributors)
@@ -87,6 +88,11 @@ In this story, you have been working as a new consultant at `North Star Solution
 - [Day 6: Review some code.](docs/day06/solution/step-by-step.md)
 - [Day 7: Read the tests and test your reading...](docs/day07/solution/step-by-step.md)
 - [Day 8: Tell me what to do.](docs/day08/solution/step-by-step.md)
+- [Day 9: Improve tests readability.](docs/day09/solution/step-by-step.md)
+
+## Calendar
+You can access our calendar view [here](https://advent-of-craft.github.io/2024/).
+[![Calendar Page](img/site.webp)](https://advent-of-craft.github.io/2024/)
 
 ## Who are we?
 ### Founders
