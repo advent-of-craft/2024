@@ -1,0 +1,4 @@
+assertpy~=1.1
+pytest
+parameterized~=0.9.0
+setuptools~=70.3.0
