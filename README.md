@@ -80,7 +80,7 @@ In this story, you have been working as a new consultant at `North Star Solution
 - [Day 10: Fix a bug.](docs/day10/challenge.md)
 - [Day 11: Secure the program.](docs/day11/challenge.md)
 - [Day 12: Collect or not collect?](docs/day12/challenge.md)
-- [Day 13 - Refactor your code with the Mikado method.](docs/day13/challenge.md)
+- [Day 13: Refactor your code with the Mikado method.](docs/day13/challenge.md)
 
 ### Solutions
 - [Day 0: An encrypted email...](docs/day00/solution/step-by-step.md)
