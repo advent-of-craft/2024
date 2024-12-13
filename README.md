@@ -94,6 +94,7 @@ In this story, you have been working as a new consultant at `North Star Solution
 - [Day 9: Improve tests readability.](docs/day09/solution/step-by-step.md)
 - [Day 10: Fix a bug.](docs/day10/solution/step-by-step.md)
 - [Day 11: Secure the program.](docs/day11/solution/step-by-step.md)
+- [Day 12: Collect or not collect?](docs/day12/solution/step-by-step.md)
 
 ## Calendar
 You can access our calendar view [here](https://advent-of-craft.github.io/2024/).
