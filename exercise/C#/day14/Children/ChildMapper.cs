@@ -1,3 +1,4 @@
+using System.Globalization;
 using Children.Db2;
 using Children.DTOs;
 using Riok.Mapperly.Abstractions;
@@ -18,5 +19,18 @@ namespace Children
         [MapProperty(nameof(X5T78.ST_C), $"{nameof(Child.Address)}.{nameof(Address.City)}")]
         [MapProperty(nameof(X5T78.ST_CID), $"{nameof(Child.Address)}.{nameof(Address.CountryId)}")]
         public partial Child ToDto(X5T78 child);
+        
+        private DateOnly MapDateOnly(string birthDate)
+        {
+            if( DateOnly.TryParseExact(birthDate, 
+                   "dd/MM/yyyy", 
+                   CultureInfo.InvariantCulture, 
+                   DateTimeStyles.None, 
+                   out var dateOfBirth))
+            {
+                return dateOfBirth;
+            }
+            throw new ArgumentException("Date of birth is required");
+        }
     }
 }
