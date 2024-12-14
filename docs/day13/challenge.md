@@ -1,4 +1,4 @@
-## Day 13 - Refactor your code with the Mikado method.
+## Day 13: Refactor your code with the Mikado method.
 This exercise is brought to you by:
 <table>
   <tr>
