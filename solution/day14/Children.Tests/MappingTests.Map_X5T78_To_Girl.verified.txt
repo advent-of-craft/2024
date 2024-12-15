@@ -1,0 +1,15 @@
+﻿{
+  Id: Guid_1,
+  FirstName: Alice,
+  MiddleName: Marie,
+  LastName: Smith,
+  NickName: Ali,
+  BirthCity: Paradise,
+  BirthDate: Date_1,
+  Address: {
+    Number: 123,
+    Street: Sunny Street,
+    City: Paradise,
+    CountryId: 99
+  }
+}
