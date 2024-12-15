@@ -3,7 +3,7 @@
   FirstName: Bob,
   LastName: Brown,
   BirthCity: Paradise,
-  BirthDate: Date_1,
+  BirthDate: 2021-09-01,
   Gender: Boy,
   Address: {
     Number: 9,

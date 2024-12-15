@@ -5,6 +5,13 @@ namespace Children.Tests;
 public class MappingTests
 {
     private readonly ChildMapper _mapper = new();
+    private readonly VerifySettings _settings;
+
+    public MappingTests()
+    {
+        _settings = new VerifySettings();
+        _settings.DontScrubDateTimes();
+    }
 
     [Fact]
     public async Task Map_X5T78_To_Girl()
@@ -33,7 +40,7 @@ public class MappingTests
 
         var child = _mapper.ToDto(db2Child);
 
-        await Verify(child);
+        await Verify(child, _settings);
     }
 
     [Fact]
@@ -61,8 +68,7 @@ public class MappingTests
         };
 
         var child = _mapper.ToDto(db2Child);
-            
-        await Verify(child);
+        await Verify(child, _settings);
     }
 
     public class Failures
