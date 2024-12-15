@@ -1,0 +1,15 @@
+﻿{
+  Id: Guid_1,
+  FirstName: Bob,
+  LastName: Brown,
+  NickName: Bobby,
+  BirthCity: Paradise,
+  BirthDate: Date_1,
+  Gender: Boy,
+  Address: {
+    Number: 9,
+    Street: Oak Street,
+    City: Paradise,
+    CountryId: 98988
+  }
+}
