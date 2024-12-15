@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+        <AssemblyName>SantaChristmasList.Operations</AssemblyName>
+        <RootNamespace>SantaChristmasList.Operations</RootNamespace>
+        <PackageId>SantaChristmasList.Operations</PackageId>
+        <Authors>SantaChristmasList.Operations</Authors>
+        <Company>SantaChristmasList.Operations</Company>
+        <Product>SantaChristmasList.Operations</Product>
+    </PropertyGroup>
+
+</Project>
