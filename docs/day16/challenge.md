@@ -33,7 +33,7 @@ After all, we've got a lot of work to do before Christmas, and we can't afford a
 Help the elves solve these problems:
 - Start a timer for `5 minutes` of individual bug bounty based on elf explanation
 
-[![Pomodoro](solution/img/pomodoro.webp)](https://pomofocus.io/)
+[![Pomodoro](pomodoro.webp)](https://pomofocus.io/)
 
 - After that, please help yourself with your favorite `AI Assistant`
 - Then, solve the bug / bugs?
