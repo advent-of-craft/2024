@@ -100,6 +100,7 @@ In this story, you have been working as a new consultant at `North Star Solution
 - [Day 12: Collect or not collect?](docs/day12/solution/step-by-step.md)
 - [Day 13: Refactor your code with the Mikado method.](docs/day13/solution/step-by-step.md)
 - [Day 14: Find a more efficient way to test object mappings.](docs/day14/solution/step-by-step.md)
+- [Day 15: Reason to fail?](docs/day15/solution/step-by-step.md)
 
 ## Calendar
 You can access our calendar view [here](https://advent-of-craft.github.io/2024/).
