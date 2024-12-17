@@ -158,14 +158,6 @@ namespace EID.Tests
                             .Should().Be("EID key is invalid"));
                     });
             }
-            
-            private static string ComputeControlKey(int sex, int birthYear, int serialNumber)
-            {
-                var notValidatedEid = int.Parse($"{sex}{birthYear:D2}{serialNumber:D3}");
-                var controlKey = 97 - notValidatedEid % 97;
-
-                return $"{sex}{birthYear:D2}{serialNumber:D3}{controlKey:D2}";
-            }
         }
     }
 }
