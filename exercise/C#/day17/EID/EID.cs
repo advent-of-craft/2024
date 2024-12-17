@@ -34,12 +34,9 @@ public class EID
             Error.New("EID key is invalid");
     
     private static Either<Error, string> VerifySerialNumber(string potentialEid)
-    {
-        int serialNumber = int.Parse(potentialEid.Substring(3, 3));
-        return serialNumber is < 1 or > 999   ?
-            Error.New("EID serial number must be between 001 and 999 digits") 
+        => ExtractSerialNumber(potentialEid) is < 1 or > 999 
+            ? Error.New("EID serial number must be between 001 and 999 digits") 
             : Either<Error, string>.Right(potentialEid);
-    }
 
     private static Either<Error, string> VerifySex(string potentialEid)
         => (ElfSex)char.GetNumericValue(potentialEid[0]) switch
@@ -49,16 +46,17 @@ public class EID
         };
 
     private static Either<Error, string> VerifyDigit(string potentialEid)
-    {
-        return potentialEid.Any(c => !char.IsDigit(c)) ?
+        => potentialEid.Any(c => !char.IsDigit(c)) ?
             Error.New("EID must contain only digits") 
             : Either<Error, string>.Right(potentialEid);
-    }
 
     private static Either<Error, string> VerifyNotEmpty(string potentialEid)
         => string.IsNullOrWhiteSpace(potentialEid)
             ? Error.New("EID cannot be empty")
             : Either<Error, string>.Right(potentialEid);
+    
+    private static int ExtractSerialNumber(string potentialEid)
+        => int.Parse(potentialEid.Substring(3, 3));
     
     private static int GetEidNumber(string potentialEid)
         => int.Parse(potentialEid.Substring(0, 6));
