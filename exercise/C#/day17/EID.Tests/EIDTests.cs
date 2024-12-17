@@ -20,22 +20,33 @@ namespace EID.Tests
             anEid.Should().BeRight();
             anEid.ValueUnsafe().Value.Should().Be(validEid);
         }
-        
-        [Theory]
-        [InlineData(null)] // String may be null (depending on the language used)
-        [InlineData("")] // empty string
-        [InlineData("2230")] // too short
-        [InlineData("22301")] // too short
-        [InlineData("40000325")] // incorrect sex
-        [InlineData("1ab14599")] // incorrect birth year
-        [InlineData("19814x08")]// incorrect serial number
-        [InlineData("19912378")] // incorrect control key
-        public void EidParse_Should_Return_AnError(string invalidEid)
+     
+        private readonly Gen<string> _aValidEid
+            = from Sex in Gen.Elements(1, 2, 3)
+                from BirthYear in Gen.Choose(0, 99)    
+                from SerialNumber in Gen.Choose(1, 999)
+            select $"{ComputeControlKey(Sex, BirthYear, SerialNumber)}";
+
+        private static string ComputeControlKey(int sex, int birthYear, int serialNumber)
         {
-            var anEid = EID.Parse(invalidEid);
-            anEid.Should().BeLeft();
+            var notValidatedEid = int.Parse($"{sex}{birthYear:D2}{serialNumber:D3}");
+            var controlKey = 97 - notValidatedEid % 97;
+
+            return $"{sex}{birthYear:D2}{serialNumber:D3}{controlKey:D2}";
         }
 
+        [Property (MaxTest = 100)]
+        public Property Parsing_A_Valid_EID_Should_Be_EID()
+        {
+            return Prop.ForAll(
+                _aValidEid.ToArbitrary(),
+                s =>
+                    {
+                        var anEid = EID.Parse(s);
+                        anEid.Should().BeRight(x => x.Value.Should().Be(s));
+                    });
+        }
+        
         public class Failures
         {
             private readonly Gen<string> _invalidEid
@@ -51,7 +62,8 @@ namespace EID.Tests
                     s =>
                     {
                         var anEid = EID.Parse(s);
-                        anEid.Should().BeLeft(x => x.Message.Should().Be("EID cannot be empty"));
+                        anEid.Should().BeLeft(x => x.Message
+                            .Should().Be("EID cannot be empty"));
                     });
             }
 
@@ -67,11 +79,12 @@ namespace EID.Tests
                     s =>
                     {
                         var anEid = EID.Parse(s);
-                        anEid.Should().BeLeft(x => x.Message.Should().Be("EID must contain only digits"));
+                        anEid.Should().BeLeft(x => x.Message
+                            .Should().Be("EID must contain only digits"));
                     });
             }
 
-            [Property (MaxTest = 10)]
+            [Property (MaxTest = 100)]
             public Property NotValidLenght_should_not_be_and_EID()
             {
                 return Prop.ForAll(
@@ -82,44 +95,77 @@ namespace EID.Tests
                     s =>
                     {
                         var anEid = EID.Parse(s);
-                        anEid.Should().BeLeft(x => x.Message.Should().Be("EID length is invalid"));
+                        anEid.Should().BeLeft(x => x.Message
+                            .Should().Be("EID length is invalid"));
                     });
             }
             
-            /*[Property (MaxTest = 10)]
+            
+            private readonly Gen<string> _anInvalidSexForEid
+                = from Sex in Gen.Elements(4, 5, 6, 7, 8, 9)
+                from BirthYear in Gen.Choose(0, 99)    
+                from SerialNumber in Gen.Choose(1, 999)
+                select $"{ComputeControlKey(Sex, BirthYear, SerialNumber)}";
+
+            [Property (MaxTest = 100)]
             public Property NotValidSex_should_not_be_and_EID()
             {
                 return Prop.ForAll(
-                    _invalidEid
-                        .Where(s => !string.IsNullOrWhiteSpace(s)
-                                    && s.Length == 8
-                                    && s.All(c => char.IsDigit(c))
-                                    && !"123".Contains(s[0]))
-                        .ToArbitrary(),
+                    _anInvalidSexForEid.ToArbitrary(),
                     s =>
                     {
                         var anEid = EID.Parse(s);
-                        anEid.Should().BeLeft(x => x.Message.Should().Be("EID sex is invalid, must be 1, 2 or 3"));
+                        anEid.Should().BeLeft(x => x.Message
+                            .Should().Be("EID sex is invalid, must be 1, 2 or 3"));
                     });
-            }*/
-            
-            /*[Property (MaxTest = 1)]
+            }
+
+            private readonly Gen<string> _anInvalidSerialForEid
+                = from Sex in Gen.Elements(1,2,3)
+                    from BirthYear in Gen.Choose(0, 99)    
+                    select $"{ComputeControlKey(Sex, BirthYear, 0)}";
+
+            [Property (MaxTest = 100)]
             public Property NotValidSerialNumber_should_not_be_and_EID()
             {
                 return Prop.ForAll(
-                    _invalidEid
-                        .Where(s => !string.IsNullOrWhiteSpace(s)
-                                    && s.All(c => char.IsDigit(c))
-                                    && "123".Contains(s[0])
-                                    && s.Length == 8
-                                    && s.Substring(2, 3) == "000")
-                        .ToArbitrary(),
+                    _anInvalidSerialForEid.ToArbitrary(),
                     s =>
                     {
                         var anEid = EID.Parse(s);
-                        anEid.Should().BeLeft(x => x.Message.Should().Be("EID serial number must be between 001 and 999 digits"));
+                        anEid.Should().BeLeft(x => x.Message
+                            .Should().Be("EID serial number must be between 001 and 999 digits"));
                     });
-            }*/
+            }
+            
+            private readonly Gen<string> _anInvalidControlKeyForEid
+                = from Sex in Gen.Elements(1, 2, 3)
+                    from BirthYear in Gen.Choose(0, 99)    
+                    from SerialNumber in Gen.Choose(1, 999)
+                    //from ControlKey in Gen.Choose(1, 99) // might fail
+                    from ControlKey in Gen.Elements(98, 99)
+                select $"{Sex}{BirthYear:D2}{SerialNumber:D3}{ControlKey:D2}";
+
+            [Property (MaxTest = 100)]
+            public Property NotValidControlKey_should_not_be_and_EID()
+            {
+                return Prop.ForAll(
+                    _anInvalidControlKeyForEid.ToArbitrary(),
+                    s =>
+                    {
+                        var anEid = EID.Parse(s);
+                        anEid.Should().BeLeft(x => x.Message
+                            .Should().Be("EID key is invalid"));
+                    });
+            }
+            
+            private static string ComputeControlKey(int sex, int birthYear, int serialNumber)
+            {
+                var notValidatedEid = int.Parse($"{sex}{birthYear:D2}{serialNumber:D3}");
+                var controlKey = 97 - notValidatedEid % 97;
+
+                return $"{sex}{birthYear:D2}{serialNumber:D3}{controlKey:D2}";
+            }
         }
     }
 }

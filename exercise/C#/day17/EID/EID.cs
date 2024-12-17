@@ -35,7 +35,7 @@ public class EID
     
     private static Either<Error, string> VerifySerialNumber(string potentialEid)
     {
-        int serialNumber = int.Parse(potentialEid.Substring(2, 3));
+        int serialNumber = int.Parse(potentialEid.Substring(3, 3));
         return serialNumber is < 1 or > 999   ?
             Error.New("EID serial number must be between 001 and 999 digits") 
             : Either<Error, string>.Right(potentialEid);
