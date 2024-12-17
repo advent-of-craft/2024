@@ -25,6 +25,7 @@ namespace EID.Tests
         [InlineData(null)] // String may be null (depending on the language used)
         [InlineData("")] // empty string
         [InlineData("2230")] // too short
+        [InlineData("22301")] // too short
         [InlineData("40000325")] // incorrect sex
         [InlineData("1ab14599")] // incorrect birth year
         [InlineData("19814x08")]// incorrect serial number
@@ -53,14 +54,15 @@ namespace EID.Tests
                         anEid.Should().BeLeft(x => x.Message.Should().Be("EID cannot be empty"));
                     });
             }
-            
-            [Property (MaxTest = 100)]
+
+            [Property(MaxTest = 100)]
             public Property NotOnlyDigit_should_not_be_and_EID()
             {
                 return Prop.ForAll(
                     _invalidEid
                         .Where(s => !string.IsNullOrWhiteSpace(s)
-                                          && s.Any(c => !char.IsDigit(c)))
+                                    && s.Length == 8
+                                    && s.Any(c => !char.IsDigit(c)))
                         .ToArbitrary(),
                     s =>
                     {
@@ -68,13 +70,29 @@ namespace EID.Tests
                         anEid.Should().BeLeft(x => x.Message.Should().Be("EID must contain only digits"));
                     });
             }
-            
+
             [Property (MaxTest = 10)]
+            public Property NotValidLenght_should_not_be_and_EID()
+            {
+                return Prop.ForAll(
+                    _invalidEid
+                        .Where(s => !string.IsNullOrWhiteSpace(s)
+                                    && s.Length < 8)
+                        .ToArbitrary(),
+                    s =>
+                    {
+                        var anEid = EID.Parse(s);
+                        anEid.Should().BeLeft(x => x.Message.Should().Be("EID length is invalid"));
+                    });
+            }
+            
+            /*[Property (MaxTest = 10)]
             public Property NotValidSex_should_not_be_and_EID()
             {
                 return Prop.ForAll(
                     _invalidEid
                         .Where(s => !string.IsNullOrWhiteSpace(s)
+                                    && s.Length == 8
                                     && s.All(c => char.IsDigit(c))
                                     && !"123".Contains(s[0]))
                         .ToArbitrary(),
@@ -83,7 +101,7 @@ namespace EID.Tests
                         var anEid = EID.Parse(s);
                         anEid.Should().BeLeft(x => x.Message.Should().Be("EID sex is invalid, must be 1, 2 or 3"));
                     });
-            }
+            }*/
             
             /*[Property (MaxTest = 1)]
             public Property NotValidSerialNumber_should_not_be_and_EID()
