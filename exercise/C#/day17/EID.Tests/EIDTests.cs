@@ -21,6 +21,20 @@ namespace EID.Tests
             anEid.ValueUnsafe().Value.Should().Be(validEid);
         }
         
+        [Theory]
+        [InlineData(null)] // String may be null (depending on the language used)
+        [InlineData("")] // empty string
+        [InlineData("2230")] // too short
+        [InlineData("40000325")] // incorrect sex
+        [InlineData("1ab14599")] // incorrect birth year
+        [InlineData("19814x08")]// incorrect serial number
+        [InlineData("19912378")] // incorrect control key
+        public void EidParse_Should_Return_AnError(string invalidEid)
+        {
+            var anEid = EID.Parse(invalidEid);
+            anEid.Should().BeLeft();
+        }
+
         public class Failures
         {
             private readonly Gen<string> _invalidEid

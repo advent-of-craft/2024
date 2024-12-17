@@ -6,15 +6,22 @@ namespace EID;
 public class EID(string potentialEid)
 {
     public string Value => potentialEid;
+    const int EidLength = 8;
     private const int ComplementNumber = 97;
     
     public static Either<Error, EID> Parse(string potentialEid)
         => VerifyNotEmpty(potentialEid)
             .Bind(VerifyDigit)
+            .Bind(VerifyLength)
             .Bind(VerifySex)
             .Bind(VerifySerialNumber)
             .Bind(VerifyKey)
             .Select(s => new EID(s));
+
+    private static Either<Error, string> VerifyLength(string potentialEid)
+        => potentialEid.Length == EidLength 
+            ? Either<Error, string>.Right(potentialEid) 
+            : Error.New("EID length is invalid");
 
     private static Either<Error, string> VerifyKey(string potentialEid)
         => ParseEidKey(potentialEid) == ComplementNumber - GetEidNumber(potentialEid) % ComplementNumber ?
