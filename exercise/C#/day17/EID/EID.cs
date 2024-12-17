@@ -3,11 +3,16 @@ using LanguageExt.Common;
 
 namespace EID;
 
-public class EID(string potentialEid)
+public class EID
 {
-    public string Value => potentialEid;
     const int EidLength = 8;
     private const int ComplementNumber = 97;
+    private readonly string _potentialEid;
+    private EID(string value)
+    {
+        _potentialEid = value;
+    }
+    public string Value => _potentialEid;
     
     public static Either<Error, EID> Parse(string potentialEid)
         => VerifyNotEmpty(potentialEid)
