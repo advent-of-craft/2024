@@ -13,6 +13,7 @@
         <PackageReference Include="FluentAssertions" Version="6.12.1" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
         <PackageReference Include="Riok.Mapperly" Version="4.0.0" />
+        <PackageReference Include="Verify.Xunit" Version="28.5.0" />
         <PackageReference Include="xunit" Version="2.9.2" />
         <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -22,6 +23,15 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Children\Children.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="MappingTests.Map_X5T78_To_Girl.verified.txt">
+        <DependentUpon>MappingTests.cs</DependentUpon>
+      </None>
+      <None Update="MappingTests.Map_X5T78_To_Child_For_A_Boy.verified.txt">
+        <DependentUpon>MappingTests.cs</DependentUpon>
+      </None>
     </ItemGroup>
 
 </Project>
