@@ -106,6 +106,7 @@ In this story, you have been working as a new consultant at `North Star Solution
 - [Day 15: Reason to fail?](docs/day15/solution/step-by-step.md)
 - [Day 16: Bug bounty.](docs/day16/solution/step-by-step.md)
 - [Day 17: Parse Elf Ids (EID)](docs/day17/solution/step-by-step.md)
+- [Day 18: Add features 🦎🖖.](docs/day18/solution/step-by-step.md)
 
 ## Calendar
 You can access our calendar view [here](https://advent-of-craft.github.io/2024/).
