@@ -1,0 +1,6 @@
+Django>=3.2
+djangorestframework
+pytest
+pytest-django
+pytest-flask
+requests

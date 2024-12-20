@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: reindeer-api
+server:
+  port: 8080
