@@ -1,0 +1,28 @@
+﻿{
+  Request: {
+    Headers: [
+      {
+        Key: API-KEY,
+        Value: [
+          Guid_1
+        ]
+      },
+      {
+        Key: Transfer-Encoding,
+        Value: [
+          chunked
+        ]
+      }
+    ],
+    Method: {
+      Method: POST
+    },
+    RequestUri: /reindeer,
+    Version: 1.1,
+    Content: {"name":"Paolo","color":1}
+  },
+  Response: {
+    StatusCode: 201,
+    Content: {"id":"GUID_VALUE","name":"Paolo","color":1}
+  }
+}
