@@ -6,6 +6,12 @@
         Value: [
           Guid_1
         ]
+      },
+      {
+        Key: Transfer-Encoding,
+        Value: [
+          chunked
+        ]
       }
     ],
     Method: {
@@ -13,7 +19,7 @@
     },
     RequestUri: /reindeer,
     Version: 1.1,
-    Content: 
+    Content: {"name":"Paolo","color":1}
   },
   Response: {
     StatusCode: 201,
