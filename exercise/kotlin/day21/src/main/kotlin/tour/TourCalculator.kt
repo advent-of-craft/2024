@@ -38,7 +38,11 @@ class TourCalculator(private var steps: List<Step>) {
     }
 
     private fun formatDurationToHHMMSS(duration: Duration): String =
-        "${duration.toHours()}%02d:${duration.toMinutesPart()}%02d:${duration.toSecondsPart()}%02d"
+        "%02d:%02d:%02d".format(
+            duration.toHours(),
+            duration.toMinutesPart(),
+            duration.toSecondsPart()
+        )
 
     private fun fLine(step: Step?, x: Double): String {
         if (step != null) {
