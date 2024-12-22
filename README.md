@@ -112,6 +112,7 @@ In this story, you have been working as a new consultant at `North Star Solution
 - [Day 18: Add features 🦎🖖.](docs/day18/solution/step-by-step.md)
 - [Day 19: Performance...](docs/day19/solution/step-by-step.md)
 - [Day 20: Contract Tests.](docs/day20/solution/step-by-step.md)
+- [Day 21: Safely refactor the `TourCalculator`.](docs/day21/solution/step-by-step.md)
 
 ## Calendar
 You can access our calendar view [here](https://advent-of-craft.github.io/2024/).
