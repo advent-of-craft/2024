@@ -38,25 +38,23 @@ public class System
 
     public void Ascend()
     {
-        if (Status == SleighEngineStatus.On)
-        {
-            foreach (var reindeerPowerUnit in _reindeerPowerUnits)
-            {
-                _controlMagicPower += reindeerPowerUnit.HarnessMagicPower();
-            }
-
-            if (CheckReindeerStatus())
-            {
-                _dashboard.DisplayStatus("Ascending...");
-                Action = SleighAction.Flying;
-                _controlMagicPower = 0;
-            }
-            else throw new ReindeersNeedRestException();
-        }
-        else
+        if (Status != SleighEngineStatus.On)
         {
             throw new SleighNotStartedException();
         }
+        
+        foreach (var reindeerPowerUnit in _reindeerPowerUnits)
+        {
+            _controlMagicPower += reindeerPowerUnit.HarnessMagicPower();
+        }
+
+        if (CheckReindeerStatus())
+        {
+            _dashboard.DisplayStatus("Ascending...");
+            Action = SleighAction.Flying;
+            _controlMagicPower = 0;
+        }
+        else throw new ReindeersNeedRestException();
     }
 
     public void Descend()
@@ -71,18 +69,16 @@ public class System
 
     public void Park()
     {
-        if (Status == SleighEngineStatus.On)
+        if (Status != SleighEngineStatus.On) throw new SleighNotStartedException();
+        
+        _dashboard.DisplayStatus("Parking...");
+
+        foreach (var reindeerPowerUnit in _reindeerPowerUnits)
         {
-            _dashboard.DisplayStatus("Parking...");
-
-            foreach (var reindeerPowerUnit in _reindeerPowerUnits)
-            {
-                reindeerPowerUnit.Reindeer.TimesHarnessing = 0;
-            }
-
-            Action = SleighAction.Parked;
+            reindeerPowerUnit.Reindeer.TimesHarnessing = 0;
         }
-        else throw new SleighNotStartedException();
+
+        Action = SleighAction.Parked;
     }
 
     public void StopSystem()
