@@ -15,13 +15,10 @@ public class ReindeerPowerUnit
     
     public float HarnessMagicPower()
     {
-        if (!Reindeer.NeedsRest())
-        {
-            Reindeer.TimesHarnessing++;
-            return _amplifier.Amplify(Reindeer.GetMagicPower());
-        }
-
-        return 0;
+        if (Reindeer.NeedsRest()) return 0;
+        
+        Reindeer.TimesHarnessing++;
+        return _amplifier.Amplify(Reindeer.GetMagicPower());
     }
 
     public float CheckMagicPower()
