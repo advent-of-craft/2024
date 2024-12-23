@@ -1,0 +1,23 @@
+{
+  "require": {
+    "php": ">=8.1",
+    "pestphp/pest": "^2.33"
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/App",
+      "Core\\Control\\": "src/Core/Control",
+      "External\\Deer\\": "src/External/Deer",
+      "External\\Stable\\": "src/External/Stable",
+      "Tests\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/pest"
+  }
+}
