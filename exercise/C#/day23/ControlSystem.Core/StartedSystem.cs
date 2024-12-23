@@ -10,7 +10,6 @@ public class StartedSystem
     private readonly MagicStable _magicStable;
     private readonly XmasTownAmplifiers _xmasTownAmplifiers = XmasTownAmplifiers.Build();
     public SleighAction Action { get; set; } = SleighAction.Flying;
-    private float _controlMagicPower = 0;
     
     private List<ReindeerPowerUnit> BringAllReindeers() =>
         _magicStable
@@ -56,17 +55,9 @@ public class StartedSystem
     }
 
     private bool HasEnoughMagicPower()
-    {
-        foreach (var reindeerPowerUnit in _reindeerPowerUnits)
-        {
-            _controlMagicPower += reindeerPowerUnit.HarnessMagicPower();
-        }
-        bool status = _controlMagicPower >= XmasSpirit;
+        => _reindeerPowerUnits
+            .Sum(r => r.CheckMagicPower()) >= XmasSpirit;
 
-        _controlMagicPower = 0;
-        return status;
-    }
-    
     public void StopSystem()
     {
         _dashboard.DisplayStatus("Stopping the sleigh...");
