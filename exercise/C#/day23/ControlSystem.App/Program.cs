@@ -7,7 +7,7 @@ public static class Program
     static void Main(string[] args)
     {
         var controlSystem = new ControlSystem.Core.System(new MagicStable());
-        controlSystem.StartSystem();
+        var startedSystem = controlSystem.StartSystem();
 
         var keepRunning = true;
 
@@ -22,7 +22,7 @@ public static class Program
                 case "a":
                     try
                     {
-                        controlSystem.Ascend();
+                        startedSystem.Ascend();
                     }
                     catch (ReindeersNeedRestException e)
                     {
@@ -39,7 +39,7 @@ public static class Program
                 case "d":
                     try
                     {
-                        controlSystem.Descend();
+                        startedSystem.Descend();
                     }
                     catch (SleighNotStartedException e)
                     {
@@ -52,7 +52,7 @@ public static class Program
                 case "p":
                     try
                     {
-                        controlSystem.Park();
+                        startedSystem.Park();
                     }
                     catch (SleighNotStartedException e)
                     {
@@ -72,6 +72,6 @@ public static class Program
             }
         }
 
-        controlSystem.StopSystem();
+        startedSystem.StopSystem();
     }
 }
