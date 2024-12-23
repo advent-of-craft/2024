@@ -1,10 +1,12 @@
-﻿namespace ControlSystem;
+﻿using ControlSystem.External;
+
+namespace ControlSystem;
 
 public static class Program
 {
     static void Main(string[] args)
     {
-        var controlSystem = new ControlSystem.Core.System();
+        var controlSystem = new ControlSystem.Core.System(new MagicStable());
         controlSystem.StartSystem();
 
         var keepRunning = true;

@@ -1,4 +1,5 @@
 using ControlSystem.Core;
+using ControlSystem.External;
 using FluentAssertions;
 
 namespace ControlSystem.Tests;
@@ -7,54 +8,55 @@ public class TestControlSystem : IDisposable
 {
     private readonly StringWriter _output;
     private readonly TextWriter _originalOutput;
-
+    private readonly Core.System _controlSystem;
+    
     public TestControlSystem()
     {
         _output = new StringWriter();
         _originalOutput = Console.Out;
         Console.SetOut(_output);
+        
+        var magicStable = new MagicStable();
+        // reset the reindeer as Healthy for test
+        _controlSystem = new Core.System(magicStable);
     }
 
     [Fact]
     public void TestStart()
     {
         // The system has been started
-        var controlSystem = new Core.System();
-        controlSystem.Action = SleighAction.Flying;
-        controlSystem.Status = SleighEngineStatus.Off;
-        controlSystem.StartSystem();
-        controlSystem.Status.Should().Be(SleighEngineStatus.On);
+        _controlSystem.Action = SleighAction.Flying;
+        _controlSystem.Status = SleighEngineStatus.Off;
+        _controlSystem.StartSystem();
+        _controlSystem.Status.Should().Be(SleighEngineStatus.On);
         _output.ToString().Trim().Should().Be($"Starting the sleigh...{Environment.NewLine}System ready.");
     }
 
     [Fact]
     public void TestAscend()
     {
-        var controlSystem = new Core.System();
-        controlSystem.StartSystem();
-        controlSystem.Invoking(cs => cs.Ascend()).Should().NotThrow<ReindeersNeedRestException>();
-        controlSystem.Action.Should().Be(SleighAction.Flying);
+        _controlSystem.StartSystem();
+        _controlSystem.Invoking(cs => cs.Ascend()).Should().NotThrow<ReindeersNeedRestException>();
+        _controlSystem.Action.Should().Be(SleighAction.Flying);
         _output.ToString().Trim().Should().Be($"Starting the sleigh...{Environment.NewLine}System ready.{Environment.NewLine}Ascending...");
     }
 
     [Fact]
     public void TestDescend()
     {
-        var controlSystem = new Core.System();
-        controlSystem.StartSystem();
-        controlSystem.Ascend();
-        controlSystem.Invoking(cs => cs.Descend()).Should().NotThrow<SleighNotStartedException>();
-        controlSystem.Action.Should().Be(SleighAction.Hovering);
+        _controlSystem.StartSystem();
+        _controlSystem.Ascend();
+        _controlSystem.Invoking(cs => cs.Descend()).Should().NotThrow<SleighNotStartedException>();
+        _controlSystem.Action.Should().Be(SleighAction.Hovering);
         _output.ToString().Trim().Should().Be($"Starting the sleigh...{Environment.NewLine}System ready.{Environment.NewLine}Ascending...{Environment.NewLine}Descending...");
     }
 
     [Fact]
     public void TestPark()
     {
-        var controlSystem = new Core.System();
-        controlSystem.StartSystem();
-        controlSystem.Invoking(cs => cs.Park()).Should().NotThrow<SleighNotStartedException>();
-        controlSystem.Action.Should().Be(SleighAction.Parked);
+        _controlSystem.StartSystem();
+        _controlSystem.Invoking(cs => cs.Park()).Should().NotThrow<SleighNotStartedException>();
+        _controlSystem.Action.Should().Be(SleighAction.Parked);
     }
 
     public void Dispose()

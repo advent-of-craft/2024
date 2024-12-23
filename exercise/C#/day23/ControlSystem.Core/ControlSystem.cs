@@ -1,3 +1,4 @@
+using System.Collections;
 using ControlSystem.External;
 
 namespace ControlSystem.Core;
@@ -6,25 +7,34 @@ public class System
 {
     private const int XmasSpirit = 40;
     private readonly Dashboard _dashboard;
-    private readonly MagicStable _magicStable = new MagicStable();
+    private readonly MagicStable _magicStable;
     private readonly List<ReindeerPowerUnit> _reindeerPowerUnits;
     public SleighEngineStatus Status { get; set; }
     public SleighAction Action { get; set; }
     private float _controlMagicPower = 0;
 
-    public System()
+    private readonly Stack<MagicPowerAmplifier> _amplifiers = new();
+    private MagicPowerAmplifier GetAmplifier() => _amplifiers.Count != 0 
+        ? _amplifiers.Pop() 
+        : new MagicPowerAmplifier(AmplifierType.Basic);
+    
+    public System(MagicStable magicStable)
     {
+        _amplifiers.Push(new MagicPowerAmplifier(AmplifierType.Blessed));
+        _amplifiers.Push(new MagicPowerAmplifier(AmplifierType.Blessed));
+        _amplifiers.Push(new MagicPowerAmplifier(AmplifierType.Divine));
+        
+        _magicStable = magicStable;
         _dashboard = new Dashboard();
         _reindeerPowerUnits = BringAllReindeers();
     }
 
     private List<ReindeerPowerUnit> BringAllReindeers() =>
-        _magicStable.GetAllReindeers().Select(AttachPowerUnit).ToList();
-
-    public ReindeerPowerUnit AttachPowerUnit(Reindeer reindeer)
-    {
-        return new ReindeerPowerUnit(reindeer);
-    }
+        _magicStable
+            .GetAllReindeers()
+            .OrderByDescending(r => r.GetMagicPower())
+            .Select(reindeer => new ReindeerPowerUnit(reindeer, GetAmplifier()))
+            .ToList();
 
     public void StartSystem()
     {
