@@ -12,7 +12,7 @@ public class Amplifiers
     }
 
     private readonly Stack<MagicPowerAmplifier> _amplifiers = new();
-    public MagicPowerAmplifier GetNextAmplifier() => _amplifiers.Count != 0 
+    public MagicPowerAmplifier GetNext() => _amplifiers.Count != 0 
         ? _amplifiers.Pop() 
         : new MagicPowerAmplifier(AmplifierType.Basic);
 }

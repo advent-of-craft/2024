@@ -26,7 +26,7 @@ public class System
         _magicStable
             .GetAllReindeers()
             .OrderByDescending(r => r.GetMagicPower())
-            .Select(reindeer => new ReindeerPowerUnit(reindeer,_amplifiers.GetNextAmplifier()))
+            .Select(reindeer => new ReindeerPowerUnit(reindeer,_amplifiers.GetNext()))
             .ToList();
 
     public void StartSystem()
