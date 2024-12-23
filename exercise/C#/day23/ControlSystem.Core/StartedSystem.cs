@@ -4,7 +4,7 @@ namespace ControlSystem.Core;
 
 public class StartedSystem
 {
-    private Dashboard _dashboard;
+    private readonly Dashboard _dashboard;
     private const int XmasSpirit = 40;
     private readonly List<ReindeerPowerUnit> _reindeerPowerUnits;
     private readonly MagicStable _magicStable;
@@ -45,12 +45,7 @@ public class StartedSystem
     public void Park()
     {
         _dashboard.DisplayStatus("Parking...");
-
-        foreach (var reindeerPowerUnit in _reindeerPowerUnits)
-        {
-            reindeerPowerUnit.Reindeer.TimesHarnessing = 0;
-        }
-
+        _reindeerPowerUnits.ForEach(r => r.Reindeer.TimesHarnessing = 0);
         Action = SleighAction.Parked;
     }
 
