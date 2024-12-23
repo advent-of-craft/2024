@@ -13,17 +13,10 @@ public class System
     public SleighAction Action { get; set; }
     private float _controlMagicPower = 0;
 
-    private readonly Stack<MagicPowerAmplifier> _amplifiers = new();
-    private MagicPowerAmplifier GetAmplifier() => _amplifiers.Count != 0 
-        ? _amplifiers.Pop() 
-        : new MagicPowerAmplifier(AmplifierType.Basic);
+    private readonly Amplifiers _amplifiers = Amplifiers.CreateInstance();
     
     public System(MagicStable magicStable)
     {
-        _amplifiers.Push(new MagicPowerAmplifier(AmplifierType.Blessed));
-        _amplifiers.Push(new MagicPowerAmplifier(AmplifierType.Blessed));
-        _amplifiers.Push(new MagicPowerAmplifier(AmplifierType.Divine));
-        
         _magicStable = magicStable;
         _dashboard = new Dashboard();
         _reindeerPowerUnits = BringAllReindeers();
@@ -33,7 +26,7 @@ public class System
         _magicStable
             .GetAllReindeers()
             .OrderByDescending(r => r.GetMagicPower())
-            .Select(reindeer => new ReindeerPowerUnit(reindeer, GetAmplifier()))
+            .Select(reindeer => new ReindeerPowerUnit(reindeer,_amplifiers.GetNextAmplifier()))
             .ToList();
 
     public void StartSystem()
