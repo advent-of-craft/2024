@@ -24,7 +24,7 @@ namespace ControlSystem.Tests
             controlSystem.Status = SleighEngineStatus.Off;
             controlSystem.StartSystem();
             controlSystem.Status.Should().Be(SleighEngineStatus.On);
-            _output.ToString().Trim().Should().Be("Starting the sleigh...\r\nSystem ready.");
+            _output.ToString().Trim().Should().Be($"Starting the sleigh...{Environment.NewLine}System ready.");
         }
 
         [Fact]
@@ -34,7 +34,7 @@ namespace ControlSystem.Tests
             controlSystem.StartSystem();
             controlSystem.Invoking(cs => cs.Ascend()).Should().NotThrow<ReindeersNeedRestException>();
             controlSystem.Action.Should().Be(SleighAction.Flying);
-            _output.ToString().Trim().Should().Be("Starting the sleigh...\r\nSystem ready.\r\nAscending...");
+            _output.ToString().Trim().Should().Be($"Starting the sleigh...{Environment.NewLine}System ready.{Environment.NewLine}Ascending...");
         }
 
         [Fact]
@@ -45,7 +45,7 @@ namespace ControlSystem.Tests
             controlSystem.Ascend();
             controlSystem.Invoking(cs => cs.Descend()).Should().NotThrow<SleighNotStartedException>();
             controlSystem.Action.Should().Be(SleighAction.Hovering);
-            _output.ToString().Trim().Should().Be("Starting the sleigh...\r\nSystem ready.\r\nAscending...\r\nDescending...");
+            _output.ToString().Trim().Should().Be($"Starting the sleigh...{Environment.NewLine}System ready.{Environment.NewLine}Ascending...{Environment.NewLine}Descending...");
         }
 
         [Fact]
