@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Net;
 using ControlSystem.External;
 
 namespace ControlSystem.Core;
@@ -13,7 +14,7 @@ public class System
     public SleighAction Action { get; set; }
     private float _controlMagicPower = 0;
 
-    private readonly Amplifiers _amplifiers = Amplifiers.Build();
+    private readonly XmasTownAmplifiers _xmasTownAmplifiers = XmasTownAmplifiers.Build();
     
     public System(MagicStable magicStable)
     {
@@ -26,9 +27,9 @@ public class System
         _magicStable
             .GetAllReindeers()
             .OrderByDescending(r => r.GetMagicPower())
-            .Select(reindeer => new ReindeerPowerUnit(reindeer,_amplifiers.GetNext()))
+            .Select(reindeer => new ReindeerPowerUnit(reindeer,_xmasTownAmplifiers.GetNext()))
             .ToList();
-
+    
     public void StartSystem()
     {
         _dashboard.DisplayStatus("Starting the sleigh...");

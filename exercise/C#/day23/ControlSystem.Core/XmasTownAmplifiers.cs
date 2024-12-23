@@ -1,10 +1,10 @@
 namespace ControlSystem.Core;
 
-public class Amplifiers
+public class XmasTownAmplifiers
 {
-    public static Amplifiers Build()
+    public static XmasTownAmplifiers Build()
     {
-        var amplifiers = new Amplifiers();
+        var amplifiers = new XmasTownAmplifiers();
         amplifiers._amplifiers.Push(new MagicPowerAmplifier(AmplifierType.Blessed));
         amplifiers._amplifiers.Push(new MagicPowerAmplifier(AmplifierType.Blessed));
         amplifiers._amplifiers.Push(new MagicPowerAmplifier(AmplifierType.Divine));
