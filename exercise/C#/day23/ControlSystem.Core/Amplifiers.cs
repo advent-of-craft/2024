@@ -2,7 +2,7 @@ namespace ControlSystem.Core;
 
 public class Amplifiers
 {
-    public static Amplifiers CreateInstance()
+    public static Amplifiers Build()
     {
         var amplifiers = new Amplifiers();
         amplifiers._amplifiers.Push(new MagicPowerAmplifier(AmplifierType.Blessed));

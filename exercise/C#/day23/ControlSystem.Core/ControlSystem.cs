@@ -13,7 +13,7 @@ public class System
     public SleighAction Action { get; set; }
     private float _controlMagicPower = 0;
 
-    private readonly Amplifiers _amplifiers = Amplifiers.CreateInstance();
+    private readonly Amplifiers _amplifiers = Amplifiers.Build();
     
     public System(MagicStable magicStable)
     {
