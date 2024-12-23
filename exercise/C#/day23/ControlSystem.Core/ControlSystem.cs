@@ -35,19 +35,26 @@ public class System
         Status = SleighEngineStatus.On;
         _dashboard.DisplayStatus("System ready.");
     }
-
+    
+    public void StopSystem()
+    {
+        _dashboard.DisplayStatus("Stopping the sleigh...");
+        Status = SleighEngineStatus.Off;
+        _dashboard.DisplayStatus("System shutdown.");
+    }
+    
     public void Ascend()
     {
-        if (Status != SleighEngineStatus.On) throw new SleighNotStartedException();
-        if (!CheckReindeerStatus()) throw new ReindeersNeedRestException();
+        EnsureSleighIsStarted();
+        if (!HasEnoughMagicPower()) throw new ReindeersNeedRestException();
         
         _dashboard.DisplayStatus("Ascending...");
         Action = SleighAction.Flying;
     }
-
+    
     public void Descend()
     {
-        if (Status != SleighEngineStatus.On) throw new SleighNotStartedException();
+        EnsureSleighIsStarted();
         
         _dashboard.DisplayStatus("Descending...");
         Action = SleighAction.Hovering;
@@ -55,7 +62,7 @@ public class System
 
     public void Park()
     {
-        if (Status != SleighEngineStatus.On) throw new SleighNotStartedException();
+        EnsureSleighIsStarted();
         
         _dashboard.DisplayStatus("Parking...");
 
@@ -67,23 +74,20 @@ public class System
         Action = SleighAction.Parked;
     }
 
-    public void StopSystem()
-    {
-        _dashboard.DisplayStatus("Stopping the sleigh...");
-        Status = SleighEngineStatus.Off;
-        _dashboard.DisplayStatus("System shutdown.");
-    }
-
-    private bool CheckReindeerStatus()
+    private bool HasEnoughMagicPower()
     {
         foreach (var reindeerPowerUnit in _reindeerPowerUnits)
         {
             _controlMagicPower += reindeerPowerUnit.HarnessMagicPower();
         }
-        var status = _controlMagicPower >= XmasSpirit;
+        bool status = _controlMagicPower >= XmasSpirit;
 
         _controlMagicPower = 0;
-        
         return status;
+    }
+    
+    private void EnsureSleighIsStarted()
+    {
+        if (Status != SleighEngineStatus.On) throw new SleighNotStartedException();
     }
 }
