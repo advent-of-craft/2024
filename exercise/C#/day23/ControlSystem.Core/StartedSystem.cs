@@ -45,7 +45,9 @@ public class StartedSystem
     public void Park()
     {
         _dashboard.DisplayStatus("Parking...");
-        _reindeerPowerUnits.ForEach(r => r.Reindeer.TimesHarnessing = 0);
+        
+        _reindeerPowerUnits.ForEach(r => r.ResetHarnessing());
+        
         Action = SleighAction.Parked;
     }
 

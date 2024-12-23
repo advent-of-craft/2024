@@ -25,4 +25,6 @@ public class ReindeerPowerUnit
     {
         return Reindeer.GetMagicPower();
     }
+
+    public void ResetHarnessing() => Reindeer.TimesHarnessing = 0;
 }
