@@ -1,8 +1,7 @@
-namespace ControlSystem.Core
+namespace ControlSystem.Core;
+
+public enum SleighEngineStatus
 {
-    public enum SleighEngineStatus
-    {
-        Off,
-        On
-    }
+    Off,
+    On
 }

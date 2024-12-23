@@ -1,9 +1,8 @@
-namespace ControlSystem.Core
+namespace ControlSystem.Core;
+
+public enum SleighAction
 {
-    public enum SleighAction
-    {
-        Flying,
-        Hovering,
-        Parked
-    }
+    Flying,
+    Hovering,
+    Parked
 }

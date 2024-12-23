@@ -1,76 +1,75 @@
-﻿namespace ControlSystem
+﻿namespace ControlSystem;
+
+public static class Program
 {
-    public static class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
+        var controlSystem = new ControlSystem.Core.System();
+        controlSystem.StartSystem();
+
+        var keepRunning = true;
+
+        while (keepRunning)
         {
-            var controlSystem = new ControlSystem.Core.System();
-            controlSystem.StartSystem();
+            Console.WriteLine("Enter a command (ascend (a), descend (d), park (p), or quit (q)): ");
+            var command = Console.ReadLine();
 
-            var keepRunning = true;
-
-            while (keepRunning)
+            switch (command)
             {
-                Console.WriteLine("Enter a command (ascend (a), descend (d), park (p), or quit (q)): ");
-                var command = Console.ReadLine();
+                case "ascend":
+                case "a":
+                    try
+                    {
+                        controlSystem.Ascend();
+                    }
+                    catch (ReindeersNeedRestException e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
+                    catch (SleighNotStartedException e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
 
-                switch (command)
-                {
-                    case "ascend":
-                    case "a":
-                        try
-                        {
-                            controlSystem.Ascend();
-                        }
-                        catch (ReindeersNeedRestException e)
-                        {
-                            Console.WriteLine(e.Message);
-                        }
-                        catch (SleighNotStartedException e)
-                        {
-                            Console.WriteLine(e.Message);
-                        }
+                    break;
 
-                        break;
+                case "descend":
+                case "d":
+                    try
+                    {
+                        controlSystem.Descend();
+                    }
+                    catch (SleighNotStartedException e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
 
-                    case "descend":
-                    case "d":
-                        try
-                        {
-                            controlSystem.Descend();
-                        }
-                        catch (SleighNotStartedException e)
-                        {
-                            Console.WriteLine(e.Message);
-                        }
+                    break;
 
-                        break;
+                case "park":
+                case "p":
+                    try
+                    {
+                        controlSystem.Park();
+                    }
+                    catch (SleighNotStartedException e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
 
-                    case "park":
-                    case "p":
-                        try
-                        {
-                            controlSystem.Park();
-                        }
-                        catch (SleighNotStartedException e)
-                        {
-                            Console.WriteLine(e.Message);
-                        }
+                    break;
 
-                        break;
+                case "quit":
+                case "q":
+                    keepRunning = false;
+                    break;
 
-                    case "quit":
-                    case "q":
-                        keepRunning = false;
-                        break;
-
-                    default:
-                        Console.WriteLine("Invalid command. Please try again.");
-                        break;
-                }
+                default:
+                    Console.WriteLine("Invalid command. Please try again.");
+                    break;
             }
-
-            controlSystem.StopSystem();
         }
+
+        controlSystem.StopSystem();
     }
 }
