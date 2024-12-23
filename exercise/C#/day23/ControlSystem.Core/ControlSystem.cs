@@ -38,33 +38,19 @@ public class System
 
     public void Ascend()
     {
-        if (Status != SleighEngineStatus.On)
-        {
-            throw new SleighNotStartedException();
-        }
+        if (Status != SleighEngineStatus.On) throw new SleighNotStartedException();
+        if (!CheckReindeerStatus()) throw new ReindeersNeedRestException();
         
-        foreach (var reindeerPowerUnit in _reindeerPowerUnits)
-        {
-            _controlMagicPower += reindeerPowerUnit.HarnessMagicPower();
-        }
-
-        if (CheckReindeerStatus())
-        {
-            _dashboard.DisplayStatus("Ascending...");
-            Action = SleighAction.Flying;
-            _controlMagicPower = 0;
-        }
-        else throw new ReindeersNeedRestException();
+        _dashboard.DisplayStatus("Ascending...");
+        Action = SleighAction.Flying;
     }
 
     public void Descend()
     {
-        if (Status == SleighEngineStatus.On)
-        {
-            _dashboard.DisplayStatus("Descending...");
-            Action = SleighAction.Hovering;
-        }
-        else throw new SleighNotStartedException();
+        if (Status != SleighEngineStatus.On) throw new SleighNotStartedException();
+        
+        _dashboard.DisplayStatus("Descending...");
+        Action = SleighAction.Hovering;
     }
 
     public void Park()
@@ -90,6 +76,14 @@ public class System
 
     private bool CheckReindeerStatus()
     {
-        return _controlMagicPower >= XmasSpirit;
+        foreach (var reindeerPowerUnit in _reindeerPowerUnits)
+        {
+            _controlMagicPower += reindeerPowerUnit.HarnessMagicPower();
+        }
+        var status = _controlMagicPower >= XmasSpirit;
+
+        _controlMagicPower = 0;
+        
+        return status;
     }
 }
