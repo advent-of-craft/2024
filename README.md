@@ -116,6 +116,7 @@ In this story, you have been working as a new consultant at `North Star Solution
 - [Day 20: Contract Tests.](docs/day20/solution/step-by-step.md)
 - [Day 21: Safely refactor the `TourCalculator`.](docs/day21/solution/step-by-step.md)
 - [Day 22: Bulletproof our code with "EID mutations".](docs/day22/solution/step-by-step.md)
+- [Day 23: Understand what is going wrong.](docs/day23/solution/step-by-step.md)
 
 ## Calendar
 You can access our calendar view [here](https://advent-of-craft.github.io/2024/).
