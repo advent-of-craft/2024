@@ -1,0 +1,11 @@
+build:
+  - os: [ darwin, linux, windows ]
+    arch: [ "386", amd64, arm64 ]
+    command: gradle
+    arguments: [ build, testClasses, -x, test ]
+test:
+  - os: [ darwin, linux, windows ]
+    arch: [ "386", amd64, arm64 ]
+    command: gradle
+    arguments: [ test ]
+test-result-dir: build/test-results/test

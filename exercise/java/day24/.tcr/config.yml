@@ -1,0 +1,9 @@
+config:
+  git:
+    auto-push: false
+    polling-period: 2s
+  mob-timer:
+    duration: 5m0s
+  tcr:
+    language: java
+    toolchain: maven

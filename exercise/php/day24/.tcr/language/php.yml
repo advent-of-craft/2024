@@ -1,0 +1,9 @@
+toolchains:
+  default: phpunit
+  compatible-with: [ phpunit ]
+source-files:
+  directories: [ src ]
+  patterns: [ '(?i)^.*\.php$' ]
+test-files:
+  directories: [ tests ]
+  patterns: [ '(?i)^.*\.php$' ]

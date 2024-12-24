@@ -1,0 +1,9 @@
+toolchains:
+  default: pytest
+  compatible-with: [ pytest ]
+source-files:
+  directories: [ src ]
+  patterns: [ '(?i)^.*\.py$' ]
+test-files:
+  directories: [ tests ]
+  patterns: [ '(?i)^.*\.py$' ]

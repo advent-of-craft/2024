@@ -1,0 +1,11 @@
+build:
+  - os: [ darwin, linux, windows ]
+    arch: [ "386", amd64, arm64 ]
+    command: mvn
+    arguments: [ test-compile ]
+test:
+  - os: [ darwin, linux, windows ]
+    arch: [ "386", amd64, arm64 ]
+    command: mvn
+    arguments: [ test ]
+test-result-dir: target/surefire-reports

@@ -1,0 +1,9 @@
+toolchains:
+  default: yarn
+  compatible-with: [yarn]
+source-files:
+  directories: [src]
+  patterns: ['(?i)^.*\.ts$']
+test-files:
+  directories: [test]
+  patterns: ['(?i)^.*\.ts$']

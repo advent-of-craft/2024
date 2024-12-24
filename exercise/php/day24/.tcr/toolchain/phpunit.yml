@@ -1,0 +1,19 @@
+build:
+  - os: [ darwin, linux ]
+    arch: [ "386", amd64, arm64 ]
+    command: ./vendor/bin/parallel-lint
+    arguments: [ --exclude, vendor, . ]
+  - os: [ windows ]
+    arch: [ "386", amd64, arm64 ]
+    command: .\vendor\bin\parallel-lint.bat
+    arguments: [ --exclude, vendor, . ]
+test:
+  - os: [ darwin, linux ]
+    arch: [ "386", amd64, arm64 ]
+    command: ./vendor/bin/pest
+    arguments: [ tests, --log-junit, .phpunit.cache/test-results.xml ]
+  - os: [ windows ]
+    arch: [ "386", amd64, arm64 ]
+    command: .\vendor\bin\pest.bat
+    arguments: [ tests, --log-junit, .phpunit.cache/test-results.xml ]
+test-result-dir: .phpunit.cache

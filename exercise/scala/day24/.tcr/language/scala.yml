@@ -1,0 +1,9 @@
+toolchains:
+  default: sbt
+  compatible-with: [ sbt ]
+source-files:
+  directories: [ src/main ]
+  patterns: [ '(?i)^.*\.scala$' ]
+test-files:
+  directories: [ src/test ]
+  patterns: [ '(?i)^.*\.scala$' ]

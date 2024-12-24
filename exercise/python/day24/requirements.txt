@@ -1,0 +1,5 @@
+assertpy~=1.1
+pytest
+Faker~=26.0.0
+hypothesis~=6.108.2
+setuptools~=70.3.0

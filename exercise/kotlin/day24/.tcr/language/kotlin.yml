@@ -1,0 +1,9 @@
+toolchains:
+  default: gradle
+  compatible-with: [ gradle ]
+source-files:
+  directories: [ src/main ]
+  patterns: [ '(?i)^.*\.kt$' ]
+test-files:
+  directories: [ src/test ]
+  patterns: [ '(?i)^.*\.kt$' ]

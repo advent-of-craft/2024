@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+base_dir="$(cd "$(dirname -- "$0")" && pwd)"
+. "${base_dir}/../tcr/tcr.sh"

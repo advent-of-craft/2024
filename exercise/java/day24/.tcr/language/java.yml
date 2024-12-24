@@ -1,0 +1,9 @@
+toolchains:
+  default: maven
+  compatible-with: [ maven ]
+source-files:
+  directories: [ src/main ]
+  patterns: [ '(?i)^.*\.java$' ]
+test-files:
+  directories: [ src/test ]
+  patterns: [ '(?i)^.*\.java$' ]
