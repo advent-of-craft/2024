@@ -1,0 +1,9 @@
+config:
+  git:
+    auto-push: false
+    polling-period: 2s
+  mob-timer:
+    duration: 30m0s
+  tcr:
+    language: csharp
+    toolchain: dotnet
