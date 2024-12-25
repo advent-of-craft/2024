@@ -43,7 +43,6 @@ We can start by listing crappy ideas:
     - In another natural language
     - Name only on 1 character
 - Shitty formatting: minified code
-...
 ```
 
 We can use some crappy ideas from this list if necessary:
@@ -54,6 +53,7 @@ We mix `CDD` and `TCR` for this exercise:
 ![CDD + TCR](../img/ccr.webp)
 
 We create a branch and run `tcr` tool:
+
 ```shell
 git checkout -b "ccr-day24"
 ./tcrw
