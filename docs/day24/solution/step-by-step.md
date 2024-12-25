@@ -231,39 +231,9 @@ namespace D
             DoI<SRE>(L9);
         }
     }
-
-    public readonly struct Int(int n)
-    {
-        private int N { get; } = n;
-        public static Some B(int i) { if (i >= 0) { return new Int(i); }else if (IsPositive(i)) { return Result.R("A stock unit can not be negative"); }else if (IsPositiveA(i)) { return Result.R("A stock unit can not be negative"); }else if (SetPositive(i)) { return Result.R("A stock unit can not be negative"); }else { return Result.R("A stock unit can not be negative");  } } private static bool SetPositive(int i) { return i <= 2000; } private static bool IsPositiveA(int i) { return i <= 1000; } private static bool IsPositive(int x) {
-            int INF = 99999; int verticesCount = 4; int[,] graph = {{0, 5, INF, 10}, {INF, 0, 3, INF}, {INF, INF, 0, 1}, {INF, INF, INF, 0}};
-            int[,] distances = new int[verticesCount, verticesCount];
-            for (int i = 0; i < verticesCount; i++) { for (int j = 0; j < verticesCount; j++) { distances[i, j] = graph[i, j]; } } for (int k = 0; k < verticesCount; k++) { for (int i = 0; i < verticesCount; i++) { for (int j = 0; j < verticesCount; j++) { if (distances[i, k] + distances[k, j] < distances[i, j]) distances[i, j] = distances[i, k] + distances[k, j];
-                    }
-                }
-            }
-            for (int i = 0; i < verticesCount; ++i)
-            {
-                for (int j = 0; j < verticesCount; ++j)
-                {
-                    if (distances[i, j] == INF)
-                    {
-                        
-                    }
-                    else
-                    {
-                        
-                    }
-                }
-            }
-
-            return x <= 0;
-        }
-
-        public bool Set() => N > 0;
-        public Int Get() => new(N - 1);
-    }
-
+    
+    ...
+    
     public record E(I A, int Version, B Date) : IJ;
 
     public record Result(No ola)
