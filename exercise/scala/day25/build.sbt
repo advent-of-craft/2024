@@ -1,0 +1,1 @@
+ThisBuild / scalaVersion := "3.3.0" // Scala 3 version

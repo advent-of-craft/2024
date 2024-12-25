@@ -1,4 +1,4 @@
-## Day 24 - Make yourself indispensable.
+## Day 24: Make yourself indispensable.
 We may start by understanding the code structure:
 
 ![Code structure](img/code-structure.webp)

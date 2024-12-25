@@ -1,4 +1,4 @@
-## Day 24 - Make yourself indispensable.
+## Day 24: Make yourself indispensable.
 It's Christmas Eve 🎅 you've been working hard to help Santa prepare. 
 You've written and refactored a lot of code.
 

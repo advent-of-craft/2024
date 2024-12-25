@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Time Capsule</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #26606d;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            color: #f99682;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: 3px solid #f99682;
+            color: #26606d;
+        }
+
+        h1 {
+            color: #26606d;
+            font-size: 36px;
+        }
+
+        .message {
+            margin: 20px 0;
+            padding: 15px;
+            border: 3px solid #f99682;
+            border-radius: 10px;
+            font-size: 18px;
+            line-height: 1.8;
+            background-color: #f6f9fa;
+            color: #333;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #26606d;
+        }
+
+        a {
+            text-decoration: none;
+            color: #26606d;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 20px;
+            margin: 20px 0;
+        }
+
+        .social-buttons {
+            margin-top: 20px;
+        }
+
+        .social-buttons a {
+            margin: 10px;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .twitter {
+            background-color: #1DA1F2;
+        }
+
+        .linkedin {
+            background-color: #0077b5;
+        }
+
+        .snowflakes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            animation: fall 10s linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+    <script>
+        function urlEncodeMessage(message) {
+            return encodeURIComponent(message).replace(/'/g, "%27").replace(/"/g, "%22");
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const message = "{{message}}";
+            const encodedMessage = urlEncodeMessage(message);
+            document.querySelector(".twitter").href = `https://twitter.com/intent/tweet?text=Here%20is%20a%20message%20to%20my%20future%20self:%20${encodedMessage}%20following%20my%20participation%20to%20the%20@AdventOfCraft%20%23craft`;
+            document.querySelector(".linkedin").href = `https://www.linkedin.com/shareArticle?mini=true&url=https://github.com/advent-of-craft/2024&summary=Here%20is%20a%20message%20to%20my%20future%20self:%20${encodedMessage}%20following%20my%20participation%20to%20the%20@AdventOfCraft%20%23craft`;
+        });
+    </script>
+</head>
+<body>
+<div class="snowflakes">
+    <div class="snowflake" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="snowflake" style="left: 15%; animation-delay: 2s;"></div>
+    <div class="snowflake" style="left: 20%; animation-delay: 1s;"></div>
+    <div class="snowflake" style="left: 30%; animation-delay: 3s;"></div>
+    <div class="snowflake" style="left: 35%; animation-delay: 0.5s;"></div>
+    <div class="snowflake" style="left: 45%; animation-delay: 1.5s;"></div>
+    <div class="snowflake" style="left: 50%; animation-delay: 0s;"></div>
+    <div class="snowflake" style="left: 60%; animation-delay: 2s;"></div>
+    <div class="snowflake" style="left: 70%; animation-delay: 1s;"></div>
+    <div class="snowflake" style="left: 85%; animation-delay: 3s;"></div>
+    <div class="snowflake" style="left: 90%; animation-delay: 1s;"></div>
+</div>
+
+<div class="container">
+    <h1>🕰️ Time Capsule 🎅</h1>
+    <p>Leave messages for your future self and reflect on your journey!</p>
+    <a href="https://github.com/advent-of-craft/2024" target="_blank">
+        <img alt="Advent of Craft"
+             src="https://raw.githubusercontent.com/advent-of-craft/2024/refs/heads/main/img/advent-of-craft.webp">
+    </a>
+    <div class="message">
+        <strong>Your Message:</strong>
+        <p><!--MESSAGE_START-->{{message}}<!--MESSAGE_END--></p>
+    </div>
+    <p><small>Message saved on {{timestamp}}</small></p>
+    <div class="social-buttons">
+        <a class="twitter" href="#" target="_blank">Share on Twitter</a>
+        <a class="linkedin" href="#" target="_blank">Share on LinkedIn</a>
+    </div>
+    <div class="footer">
+        <a href="https://github.com/advent-of-craft/2024" target="_blank">Advent Of Craft 2024</a>.
+    </div>
+</div>
+</body>
+</html>
