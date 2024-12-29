@@ -1,0 +1,15 @@
+## Test-Driven Development 🔴🟢🔵
+- [Day 5: Validate Elf Ids (EID)](../docs/day05/challenge.md)
+  - Canon T.D.D
+  - Tests list
+  - Baby steps 
+  - Parameterized Tests
+  - Regex
+- [Day 17: Parse Elf Ids (EID)](../docs/day17/challenge.md)
+  - Fight Primitive Obsession
+  - `Parse Don't Validate`
+  - `Property-Based Testing`
+  - `Type-Driven Development`
+- [Day 18: Add features 🦎🖖.](../docs/day18/challenge.md)
+  - Gherkin syntax
+  - `Behavior-Driven Development`

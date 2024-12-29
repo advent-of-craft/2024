@@ -1,0 +1,18 @@
+## Design 🏛️
+- [Day 2: Extend the program.](../docs/day02/challenge.md)
+  - Eliminate duplication by introducing a configurable `Map`
+- [Day 8: Ask me what to do.](../docs/day08/challenge.md)
+    - Refactoring code using the `Tell Don't Ask principle`
+- [Day 12: Collect or not collect?](../docs/day12/challenge.md)
+  - `Object Calisthenics` to improve our code design
+  - `First Class Collections`
+- [Day 17: Parse Elf Ids (EID)](../docs/day17/challenge.md)
+  - Fight Primitive Obsession
+  - `Parse Don't Validate`
+  - Property-Based Testing
+  - `Type-Driven Development`
+- [Day 22: Bulletproof our code with "EID mutations".](../docs/day22/challenge.md)
+  - Bulletproof our code with `Mutation Based Property-Testing`
+- [Day 23: Emergency before Christmas.](../docs/day23/challenge.md)
+  - Code Smell identification and Refactoring
+  - Make the code more robust with T.D.D and Monads

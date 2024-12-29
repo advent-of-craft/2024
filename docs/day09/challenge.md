@@ -1,6 +1,6 @@
 ## Day 9: Improve tests readability.
 
-Even though it's Chritmas town, some tasks are not fun...
+Even though it's Christmas town, some tasks are not fun...
 
 Santa needs to take some time to decide which children will receive their gifts based on several criteria.
 He has prepared a program to help him takes his decisions.

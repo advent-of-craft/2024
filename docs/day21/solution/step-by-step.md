@@ -455,5 +455,5 @@ public class TourCalculator
     - remove the `RefactoringProperty`
 
 ### Reflect
-- In what ways might defining properties for your code (like `f(x) == new_f(x)`) impact your approach to test coverage and regression prevention?
+- In what ways, might define properties for your code (like `f(x) == new_f(x)`) impact your approach to test coverage and regression prevention?
 - How can you apply `Property-Based Testing` to ensure that future refactorings retain your code’s expected behavior without relying solely on specific test cases?

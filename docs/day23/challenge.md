@@ -25,3 +25,6 @@ You can use all the craft you learned since you arrived to bulk up the testing s
 ✅🚀 **Challenge: make sure the sleigh can fly to insure Christmas happen!** 🚀✅
 
 HINT: Make sure you read the notice before you ship your changes.
+
+### Proposed Solution
+[![Proposed Solution Guide](../../img/proposed-solution.webp)](solution/step-by-step.md)
