@@ -1,6 +1,7 @@
 {
   "require": {
-    "pestphp/pest": "^2.33"
+    "pestphp/pest": "^v2.36",
+    "symfony/process": "v7.2.0"
   },
   "config": {
     "allow-plugins": {
