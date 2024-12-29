@@ -1,7 +1,7 @@
 ## Refactoring 🚀
 - [Day 1: Too many parameters...](../docs/day01/challenge.md)
   - Fight primitive obsession
-  - ``Introduce Parameter Object
+  - `Introduce Parameter Object`
   - Automated Refactoring
 - [Day 13: Refactor your code with the Mikado method.](../docs/day13/challenge.md)
   - `Mikado Method`
