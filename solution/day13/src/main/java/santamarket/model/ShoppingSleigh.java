@@ -69,7 +69,7 @@ public class ShoppingSleigh {
         }
     }
 
-    private Discount computeXForYDiscount(XForYOffer offer, Product p, int quantity, double unitPrice) {
+    public Discount computeXForYDiscount(XForYOffer offer, Product p, int quantity, double unitPrice) {
         if (quantity <= offer.y())
             return null;
         int numberOfXs = quantity / offer.x();
