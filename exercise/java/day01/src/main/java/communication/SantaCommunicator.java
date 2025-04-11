@@ -1,28 +1,47 @@
 package communication;
 
 public class SantaCommunicator {
-    private final int numberOfDaysToRest;
+    private final ReindeerPlanner reindeerPlanner;
 
     public SantaCommunicator(int numberOfDaysToRest) {
-        this.numberOfDaysToRest = numberOfDaysToRest;
+        this.reindeerPlanner = new ReindeerPlanner(numberOfDaysToRest);
     }
 
-    public String composeMessage(String reindeerName, String currentLocation, int numbersOfDaysForComingBack, int numberOfDaysBeforeChristmas) {
-        var daysBeforeReturn = daysBeforeReturn(numbersOfDaysForComingBack, numberOfDaysBeforeChristmas);
+    public String composeMessage(String reindeerName, ReindeerLocation reindeerLocation, int numberOfDaysBeforeChristmas) {
+        var daysBeforeReturn = reindeerPlanner.daysBeforeReturn(reindeerLocation, numberOfDaysBeforeChristmas);
 
-        return "Dear " + reindeerName + ", please return from " + currentLocation +
-                " in " + daysBeforeReturn + " day(s) to be ready and rest before Christmas.";
+        return "Dear " + reindeerName + ", please return from " + reindeerLocation.currentLocation() +
+               " in " + daysBeforeReturn + " day(s) to be ready and rest before Christmas.";
     }
 
-    public boolean isOverdue(String reindeerName, String currentLocation, int numbersOfDaysForComingBack, int numberOfDaysBeforeChristmas, Logger logger) {
-        if (daysBeforeReturn(numbersOfDaysForComingBack, numberOfDaysBeforeChristmas) <= 0) {
-            logger.log("Overdue for " + reindeerName + " located " + currentLocation + ".");
+    public boolean isOverdue(String reindeerName, ReindeerLocation reindeerLocation, int numberOfDaysBeforeChristmas, Logger logger) {
+        if (!reindeerLocation.isReachableInDays(reindeerPlanner.numberOfDaysBeforeRestingBeforeChristmas(numberOfDaysBeforeChristmas))) {
+            logger.log("Overdue for " + reindeerName + " located " + reindeerLocation.currentLocation() + ".");
             return true;
         }
         return false;
     }
 
-    private int daysBeforeReturn(int numbersOfDaysForComingBack, int numberOfDaysBeforeChristmas) {
-        return numberOfDaysBeforeChristmas - numbersOfDaysForComingBack - numberOfDaysToRest;
+    public static class ReindeerPlanner {
+        private final int numberOfDaysToRest;
+
+        public ReindeerPlanner(int numberOfDaysToRest) {
+            this.numberOfDaysToRest = numberOfDaysToRest;
+        }
+
+        private int numberOfDaysBeforeRestingBeforeChristmas(int numberOfDaysBeforeChristmas) {
+            return numberOfDaysBeforeChristmas - numberOfDaysToRest;
+        }
+
+        private int daysBeforeReturn(ReindeerLocation reindeerLocation, int numberOfDaysBeforeChristmas) {
+            return numberOfDaysBeforeRestingBeforeChristmas(numberOfDaysBeforeChristmas)
+                   - reindeerLocation.distanceFromSantaHouseInDays();
+        }
+    }
+
+    public record ReindeerLocation(String currentLocation, int distanceFromSantaHouseInDays) {
+        boolean isReachableInDays(int daysToTravel) {
+            return daysToTravel > distanceFromSantaHouseInDays();
+        }
     }
 }
